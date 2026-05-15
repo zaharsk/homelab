@@ -1,5 +1,15 @@
 {
   "features": {
+    "ghcr.io/devcontainers-extra/features/age-keygen:1": {
+      "version": "1.0.17",
+      "resolved": "ghcr.io/devcontainers-extra/features/age-keygen@sha256:548ce269167893ecad7d1fed89a4ba56c499e8ea5691b6e5948ae22e4c1fa1d2",
+      "integrity": "sha256:548ce269167893ecad7d1fed89a4ba56c499e8ea5691b6e5948ae22e4c1fa1d2"
+    },
+    "ghcr.io/devcontainers-extra/features/age:1": {
+      "version": "1.0.16",
+      "resolved": "ghcr.io/devcontainers-extra/features/age@sha256:78469fe5d5ded6a24d50bdb5dbd083c5cd44639969563f122a6a92d3a9326136",
+      "integrity": "sha256:78469fe5d5ded6a24d50bdb5dbd083c5cd44639969563f122a6a92d3a9326136"
+    },
     "ghcr.io/devcontainers/features/common-utils:2": {
       "version": "2.5.8",
       "resolved": "ghcr.io/devcontainers/features/common-utils@sha256:c42fdefe6d737a3a6f61cc52b23c7c9a565d08cc4d9c303669a7cf2ee5fd81fc",

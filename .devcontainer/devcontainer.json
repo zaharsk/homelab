@@ -16,16 +16,19 @@
 			"username": "automatic",
 			"userUid": "automatic",
 			"userGid": "automatic"
-		}
+		},
+		"ghcr.io/devcontainers-extra/features/age:1": {},
+		"ghcr.io/devcontainers-extra/features/age-keygen:1": {}
 	},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 	"containerEnv": {
 		"GIT_USER_NAME": "Zakhar Skorokhodov",
-		"GIT_USER_EMAIL": "zaharsk@gmail.com"
+		"GIT_USER_EMAIL": "zaharsk@gmail.com",
+		"WORKSPACE_FOLDER": "${containerWorkspaceFolder}"
 	},
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": ".devcontainer/post-create-command.sh",
+	"postCreateCommand": "./scripts/post-create-command.sh",
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
