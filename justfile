@@ -7,6 +7,7 @@ secrets/tfbackend.cf-r2.hcl
 secrets/gcp.zulu.pem
 secrets/oci.delta.pem
 secrets/oci.zulu.pem
+terraform/terraform.tfvars
 '
 
 secrets-encode:
