@@ -20,7 +20,8 @@
     "ghcr.io/devcontainers-extra/features/age:1": {},
     "ghcr.io/devcontainers-extra/features/age-keygen:1": {},
     "ghcr.io/devcontainers-extra/features/sops:1": {},
-    "ghcr.io/jsburckhardt/devcontainer-features/just:1": {}
+    "ghcr.io/jsburckhardt/devcontainer-features/just:1": {},
+    "ghcr.io/devcontainers/features/terraform:1": {}
   },
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
@@ -35,17 +36,68 @@
   // Configure tool-specific properties.
   "customizations": {
     "vscode": {
-      "settings": {
-        "editor.formatOnSave": true
-      },
       "extensions": [
         "esbenp.prettier-vscode",
-        "nefrob.vscode-just-syntax"
+        "nefrob.vscode-just-syntax",
+        "hashicorp.hcl",
+        "hashicorp.terraform"
         // "docker.docker",
         // "opentofu.vscode-opentofu",
         // "redhat.ansible",
         // "hashicorp.hcl"
-      ]
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "[terraform]": {
+          "editor.defaultFormatter": "hashicorp.terraform",
+          "editor.formatOnSave": false,
+          "editor.codeActionsOnSave": {
+            "source.formatAll.terraform": true
+          }
+        },
+        "[terraform-vars]": {
+          "editor.defaultFormatter": "hashicorp.terraform",
+          "editor.formatOnSave": false,
+          "editor.codeActionsOnSave": {
+            "source.formatAll.terraform": true
+          }
+        },
+        "[terraform-stack]": {
+          "editor.defaultFormatter": "hashicorp.terraform",
+          "editor.formatOnSave": false,
+          "editor.codeActionsOnSave": {
+            "source.formatAll.terraform": true
+          }
+        },
+        "[terraform-deploy]": {
+          "editor.defaultFormatter": "hashicorp.terraform",
+          "editor.formatOnSave": false,
+          "editor.codeActionsOnSave": {
+            "source.formatAll.terraform": true
+          }
+        },
+        "[terraform-test]": {
+          "editor.defaultFormatter": "hashicorp.terraform",
+          "editor.formatOnSave": false,
+          "editor.codeActionsOnSave": {
+            "source.formatAll.terraform": true
+          }
+        },
+        "[terraform-mock]": {
+          "editor.defaultFormatter": "hashicorp.terraform",
+          "editor.formatOnSave": false,
+          "editor.codeActionsOnSave": {
+            "source.formatAll.terraform": true
+          }
+        },
+        "[terraform-search]": {
+          "editor.defaultFormatter": "hashicorp.terraform",
+          "editor.formatOnSave": false,
+          "editor.codeActionsOnSave": {
+            "source.formatAll.terraform": true
+          }
+        }
+      }
     }
   }
   // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.

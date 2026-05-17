@@ -3,6 +3,7 @@
 secrets := '
 keys/ssh.ubuntu
 keys/ssh.ubuntu.pub
+keys/tfbackend.cf-r2.hcl
 '
 
 secrets-encode:
@@ -10,3 +11,6 @@ secrets-encode:
 
 secrets-decode:
     ./scripts/sops_decode.sh '{{ secrets }}'
+
+tf-init:
+    terraform -chdir=$WORKSPACE_FOLDER/terraform init -upgrade -reconfigure -backend-config="../keys/tfbackend.cf-r2.hcl" 
