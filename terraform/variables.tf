@@ -47,17 +47,17 @@ variable "oci_delta_region" {
 }
 
 # --> GCP Zulu
-# variable "gcp_project" {
-#   type      = string
-#   sensitive = true
-# }
-# variable "gcp_private_key_path" {
-#   type      = string
-#   sensitive = true
-# }
-# variable "gcp_free_region" {
-#   type = string
-# }
-# variable "gcp_free_zone" {
-#   type = string
-# }
+variable "gcp_project" {
+  type      = string
+  sensitive = true
+}
+variable "gcp_private_key_path" {
+  type      = string
+  sensitive = true
+}
+variable "gcp_region" {
+  type = string
+}
+variable "gcp_zone" {
+  type = string
+}
