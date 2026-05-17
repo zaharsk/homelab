@@ -88,6 +88,7 @@ terraform.rc
 keys/age.key
 keys/ssh.ubuntu
 keys/ssh.ubuntu.pub
+keys/tfbackend.cf-r2.hcl
 !*.enc.*
 !*.enc
 ### END SOPS ###
