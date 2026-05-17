@@ -5,5 +5,8 @@ keys/ssh.ubuntu
 keys/ssh.ubuntu.pub
 '
 
-sops-encode:
+secrets-encode:
     ./scripts/sops_encode.sh '{{ secrets }}'
+
+secrets-decode:
+    ./scripts/sops_decode.sh '{{ secrets }}'
