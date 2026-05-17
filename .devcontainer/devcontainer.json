@@ -29,7 +29,8 @@
     "GIT_USER_NAME": "Zakhar Skorokhodov",
     "GIT_USER_EMAIL": "zaharsk@gmail.com",
     "WORKSPACE_FOLDER": "${containerWorkspaceFolder}",
-    "SOPS_AGE_KEY_FILE": "keys/age.key"
+    "SECRETS_FOLDER": "secrets",
+    "SOPS_AGE_KEY_FILE": "age.key"
   },
   // Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": "./scripts/post-create-command.sh",

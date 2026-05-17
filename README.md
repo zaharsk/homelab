@@ -5,7 +5,7 @@
 ### 1. Generate keys:
 
 ```sh
-./scripts/generate-keys.sh
+./scripts/generate-secrets.sh
 ```
 
 ### 2. Encrypt keys

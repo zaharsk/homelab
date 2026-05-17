@@ -85,10 +85,10 @@ terraform.rc
 # planout
 
 ### START SOPS ###
-keys/age.key
-keys/ssh.ubuntu
-keys/ssh.ubuntu.pub
-keys/tfbackend.cf-r2.hcl
+age.key
+secrets/ssh.ubuntu
+secrets/ssh.ubuntu.pub
+secrets/tfbackend.cf-r2.hcl
 !*.enc.*
 !*.enc
 ### END SOPS ###
