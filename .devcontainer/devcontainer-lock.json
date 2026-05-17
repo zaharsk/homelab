@@ -10,10 +10,20 @@
       "resolved": "ghcr.io/devcontainers-extra/features/age@sha256:78469fe5d5ded6a24d50bdb5dbd083c5cd44639969563f122a6a92d3a9326136",
       "integrity": "sha256:78469fe5d5ded6a24d50bdb5dbd083c5cd44639969563f122a6a92d3a9326136"
     },
+    "ghcr.io/devcontainers-extra/features/sops:1": {
+      "version": "1.0.15",
+      "resolved": "ghcr.io/devcontainers-extra/features/sops@sha256:4cf07db9322cbe261fd103de5ba390907df63cd48d9e0d68517656fc35a27e6e",
+      "integrity": "sha256:4cf07db9322cbe261fd103de5ba390907df63cd48d9e0d68517656fc35a27e6e"
+    },
     "ghcr.io/devcontainers/features/common-utils:2": {
       "version": "2.5.8",
       "resolved": "ghcr.io/devcontainers/features/common-utils@sha256:c42fdefe6d737a3a6f61cc52b23c7c9a565d08cc4d9c303669a7cf2ee5fd81fc",
       "integrity": "sha256:c42fdefe6d737a3a6f61cc52b23c7c9a565d08cc4d9c303669a7cf2ee5fd81fc"
+    },
+    "ghcr.io/jsburckhardt/devcontainer-features/just:1": {
+      "version": "1.0.0",
+      "resolved": "ghcr.io/jsburckhardt/devcontainer-features/just@sha256:5c90013b36669270be21c69e7d8e5b6148b4b0b34fca9e104a599edf0d7c11af",
+      "integrity": "sha256:5c90013b36669270be21c69e7d8e5b6148b4b0b34fca9e104a599edf0d7c11af"
     }
   }
 }

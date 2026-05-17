@@ -1,50 +1,53 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
 {
-	"name": "Homelab",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/base:noble",
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	"features": {
-		"ghcr.io/devcontainers/features/common-utils:2": {
-			"installZsh": true,
-			"configureZshAsDefaultShell": true,
-			"installOhMyZsh": true,
-			"installOhMyZshConfig": true,
-			"upgradePackages": true,
-			"installSsl": true,
-			"username": "automatic",
-			"userUid": "automatic",
-			"userGid": "automatic"
-		},
-		"ghcr.io/devcontainers-extra/features/age:1": {},
-		"ghcr.io/devcontainers-extra/features/age-keygen:1": {}
-	},
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-	"containerEnv": {
-		"GIT_USER_NAME": "Zakhar Skorokhodov",
-		"GIT_USER_EMAIL": "zaharsk@gmail.com",
-		"WORKSPACE_FOLDER": "${containerWorkspaceFolder}"
-	},
-	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "./scripts/post-create-command.sh",
-	// Configure tool-specific properties.
-	"customizations": {
-		"vscode": {
-			"settings": {
-				"editor.formatOnSave": true
-			},
-			"extensions": [
-				// "docker.docker",
-				// "esbenp.prettier-vscode",
-				// "nefrob.vscode-just-syntax",
-				// "opentofu.vscode-opentofu",
-				// "redhat.ansible",
-				// "hashicorp.hcl"
-			]
-		}
-	}
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+  "name": "Homelab",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "image": "mcr.microsoft.com/devcontainers/base:noble",
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true,
+      "installOhMyZshConfig": true,
+      "upgradePackages": true,
+      "installSsl": true,
+      "username": "automatic",
+      "userUid": "automatic",
+      "userGid": "automatic"
+    },
+    "ghcr.io/devcontainers-extra/features/age:1": {},
+    "ghcr.io/devcontainers-extra/features/age-keygen:1": {},
+    "ghcr.io/devcontainers-extra/features/sops:1": {},
+    "ghcr.io/jsburckhardt/devcontainer-features/just:1": {}
+  },
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+  "containerEnv": {
+    "GIT_USER_NAME": "Zakhar Skorokhodov",
+    "GIT_USER_EMAIL": "zaharsk@gmail.com",
+    "WORKSPACE_FOLDER": "${containerWorkspaceFolder}",
+    "SOPS_AGE_KEY_FILE": "keys/age.key"
+  },
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "./scripts/post-create-command.sh",
+  // Configure tool-specific properties.
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.formatOnSave": true
+      },
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "nefrob.vscode-just-syntax"
+        // "docker.docker",
+        // "opentofu.vscode-opentofu",
+        // "redhat.ansible",
+        // "hashicorp.hcl"
+      ]
+    }
+  }
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "root"
 }
