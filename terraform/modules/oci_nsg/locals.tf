@@ -1,4 +1,11 @@
-## Protocols:  ICMP ("1"), TCP ("6"), UDP ("17"), and ICMPv6 ("58").
+locals {
+  protocols = {
+    "1"  = "icmp"
+    "6"  = "tcp"
+    "17" = "udp"
+    "58" = "icmp_v6"
+  }
+}
 
 locals {
   groups = {
@@ -34,7 +41,7 @@ locals {
   ingress_rules = flatten([
     for group_name, group in local.groups : [
       for rule in group.ingress : {
-        key        = "${group_name}-${rule.port}"
+        key        = "${group_name}-${local.protocols[rule.protocol]}-${rule.port}"
         group_name = group_name
         rule       = rule
       }

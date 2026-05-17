@@ -16,10 +16,10 @@ provider "oci" {
   region           = var.oci_delta_region
 }
 
-# provider "google" {
-#   alias       = "gcp_free"
-#   credentials = var.gcp_private_key_path
-#   project     = var.gcp_project
-#   region      = var.gcp_free_region
-#   zone        = var.gcp_free_zone
-# }
+provider "google" {
+  alias       = "zulu"
+  credentials = var.gcp_private_key_path
+  project     = var.gcp_project
+  region      = var.gcp_region
+  zone        = var.gcp_zone
+}

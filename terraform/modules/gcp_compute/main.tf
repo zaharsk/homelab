@@ -6,8 +6,8 @@ data "google_compute_image" "ubuntu" {
 resource "google_compute_instance" "this" {
   for_each = var.instances
 
-  name         = each.name
-  machine_type = each.machine_type
+  name         = each.key
+  machine_type = each.value.machine_type
   zone         = var.gcp_zone
 
   tags = [
@@ -18,7 +18,7 @@ resource "google_compute_instance" "this" {
   boot_disk {
     initialize_params {
       image = data.google_compute_image.ubuntu.self_link
-      size  = each.boot_disk_size
+      size  = each.value.boot_disk_size
       type  = "pd-balanced"
     }
   }
@@ -29,6 +29,6 @@ resource "google_compute_instance" "this" {
   }
 
   metadata = {
-    ssh-keys = "${each.user}:${file(pathexpand(var.ssh_public_key_path))}"
+    ssh-keys = "${each.value.user}:${file(pathexpand(var.ssh_public_key_path))}"
   }
 }
