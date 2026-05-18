@@ -1,0 +1,32 @@
+services:
+  vault:
+    image: hashicorp/vault:latest
+    container_name: vault-test
+    restart: unless-stopped
+
+    security_opt:
+      - no-new-privileges:true
+
+    environment:
+      SKIP_CHOWN: "true"
+      SKIP_SETCAP: "true"
+      VAULT_API_ADDR: "https://vault.unco.games"
+      VAULT_CLUSTER_ADDR: "http://100.76.122.97:8201"
+
+    ports:
+      - "8200:8200"
+      - "8201:8201"
+
+    command:
+      - vault
+      - server
+      - -config=/vault/config/vault.hcl
+
+    volumes:
+      - ./config:/vault/config
+      - logs:/vault/logs
+      - file:/vault/file
+
+volumes:
+  logs:
+  file:
