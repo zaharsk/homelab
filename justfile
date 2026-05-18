@@ -11,6 +11,7 @@ terraform/terraform.tfvars
 terraform/gcp_zulu.auto.tfvars
 terraform/oci_delta.auto.tfvars
 terraform/oci_zulu.auto.tfvars
+secrets/ansible.vars.yml
 '
 
 secrets-encode:

@@ -1,0 +1,48 @@
+---
+- name: Check NetBird status
+  ansible.builtin.command:
+    cmd: netbird status --json
+  register: configure_netbird_status
+  changed_when: false
+  failed_when: false
+
+- name: Parse NetBird status
+  ansible.builtin.set_fact:
+    configure_netbird_status_json: >-
+      {{
+        (
+          configure_netbird_status.stdout
+          | from_json
+        )
+        if configure_netbird_status.rc == 0
+        else {}
+      }}
+
+- name: Determine whether NetBird login is required
+  ansible.builtin.set_fact:
+    configure_netbird_needs_login: >-
+      {{
+        configure_netbird_status.rc != 0
+        or
+        configure_netbird_status_json.daemonStatus | default('') != 'Connected'
+      }}
+
+- name: Connect node to NetBird
+  ansible.builtin.command:
+    cmd: >-
+      netbird up
+      --management-url {{ configure_netbird_management_url }}
+      --setup-key {{ configure_netbird_setup_key }}
+      {% if configure_netbird_enable_ssh %}
+      --allow-server-ssh --enable-ssh-sftp
+      {% endif %}
+  changed_when: true
+  when:
+    - configure_netbird_setup_key | length > 0
+    - configure_netbird_needs_login
+
+- name: Ensure NetBird service is enabled
+  ansible.builtin.systemd:
+    name: netbird
+    enabled: true
+    state: started

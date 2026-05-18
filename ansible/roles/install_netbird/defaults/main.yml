@@ -1,0 +1,5 @@
+---
+install_netbird_repository: "https://pkgs.netbird.io/debian"
+install_netbird_keyring_path: "/usr/share/keyrings/netbird-archive-keyring.gpg"
+install_netbird_apt_list_path: "/etc/apt/sources.list.d/netbird.list"
+install_netbird_package_name: "netbird"

@@ -1,0 +1,32 @@
+- name: Install base packages
+  ansible.builtin.apt:
+    name:
+      - mc
+      - curl
+      - wget
+      - htop
+      - git
+      - unzip
+      - ca-certificates
+    state: present
+    update_cache: true
+
+- name: Install Neovim
+  ansible.builtin.apt:
+    name: neovim
+    state: present
+
+- name: Set Neovim as default editor
+  community.general.alternatives:
+    name: editor
+    path: /usr/bin/nvim
+
+- name: Set Neovim as default vi
+  community.general.alternatives:
+    name: vi
+    path: /usr/bin/nvim
+
+- name: Set Neovim as default vim
+  community.general.alternatives:
+    name: vim
+    path: /usr/bin/nvim

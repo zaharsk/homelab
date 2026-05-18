@@ -7,3 +7,4 @@
     - configure_host
     - configure_unattended_upgrades
     - upgrade_pckgs
+    - configure_users

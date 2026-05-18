@@ -1,0 +1,4 @@
+---
+configure_netbird_management_url: "https://api.netbird.io"
+configure_netbird_enable_ssh: true
+configure_netbird_setup_key: ""

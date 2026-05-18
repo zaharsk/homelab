@@ -1,0 +1,49 @@
+---
+- name: Install NetBird dependencies
+  ansible.builtin.apt:
+    name:
+      - ca-certificates
+      - curl
+      - gnupg
+    state: present
+    update_cache: true
+
+- name: Ensure keyrings directory exists
+  ansible.builtin.file:
+    path: /usr/share/keyrings
+    state: directory
+    mode: "0755"
+
+- name: Download NetBird repository key
+  ansible.builtin.get_url:
+    url: "{{ install_netbird_repository }}/public.key"
+    dest: /tmp/netbird-public.key
+    mode: "0644"
+
+- name: Convert NetBird GPG key to keyring format
+  ansible.builtin.command:
+    cmd: >
+      gpg --dearmor
+      --yes
+      --output {{ install_netbird_keyring_path }}
+      /tmp/netbird-public.key
+  changed_when: true
+
+- name: Configure NetBird APT repository
+  ansible.builtin.copy:
+    dest: "{{ install_netbird_apt_list_path }}"
+    mode: "0644"
+    content: |
+      deb [signed-by={{ install_netbird_keyring_path }}] {{ install_netbird_repository }} stable main
+
+- name: Install NetBird package
+  ansible.builtin.apt:
+    name: "{{ install_netbird_package_name }}"
+    state: present
+    update_cache: true
+
+- name: Ensure NetBird service is enabled
+  ansible.builtin.systemd:
+    name: netbird
+    enabled: true
+    state: started

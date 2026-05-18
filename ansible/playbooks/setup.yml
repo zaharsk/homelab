@@ -7,11 +7,11 @@
     - ubuntu
 
   vars_files:
-    - ../../secrets/ansible.var_files.yml
+    - ../../secrets/ansible.vars.yml
 
   roles:
-    - configure_users
-    # - install_common_pckgs
-    # - install_netbird
-    # - configure_netbird
+    - install_common_pckgs
+    - install_netbird
+    - configure_netbird
+
     # - install_docker
