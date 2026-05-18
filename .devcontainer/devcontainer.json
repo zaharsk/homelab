@@ -21,7 +21,8 @@
     "ghcr.io/devcontainers-extra/features/age-keygen:1": {},
     "ghcr.io/devcontainers-extra/features/sops:1": {},
     "ghcr.io/jsburckhardt/devcontainer-features/just:1": {},
-    "ghcr.io/devcontainers/features/terraform:1": {}
+    "ghcr.io/devcontainers/features/terraform:1": {},
+    "ghcr.io/devcontainers-extra/features/ansible:2": {}
   },
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
@@ -41,11 +42,8 @@
         "esbenp.prettier-vscode",
         "nefrob.vscode-just-syntax",
         "hashicorp.hcl",
-        "hashicorp.terraform"
-        // "docker.docker",
-        // "opentofu.vscode-opentofu",
-        // "redhat.ansible",
-        // "hashicorp.hcl"
+        "hashicorp.terraform",
+        "redhat.ansible"
       ],
       "settings": {
         "editor.formatOnSave": true,
