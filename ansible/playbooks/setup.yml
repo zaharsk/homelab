@@ -1,0 +1,17 @@
+---
+- name: Setup common software and parameters
+  hosts: ubuntu
+  become: true
+
+  tags:
+    - ubuntu
+
+  vars_files:
+    - ../../secrets/ansible.var_files.yml
+
+  roles:
+    - configure_users
+    # - install_common_pckgs
+    # - install_netbird
+    # - configure_netbird
+    # - install_docker

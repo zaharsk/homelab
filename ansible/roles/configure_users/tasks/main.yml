@@ -1,0 +1,49 @@
+---
+- name: Ensure docker group exists
+  ansible.builtin.group:
+    name: docker
+    state: present
+
+- name: Ensure managed users exist
+  loop: "{{ configure_users_list }}"
+
+  ansible.builtin.user:
+    name: "{{ item.name }}"
+    shell: /bin/bash
+    create_home: true
+    password_lock: true
+    groups: "{{ item.groups | join(',') }}"
+    append: true
+    state: present
+
+- name: Download public keys
+  loop: "{{ configure_users_list | subelements('public_keys') }}"
+  loop_control:
+    label: "{{ item.0.name }} -> {{ item.1 }}"
+
+  ansible.builtin.uri:
+    url: "{{ item.1 }}"
+    return_content: true
+  register: configure_users_public_keys
+
+
+- name: Install authorized keys
+  loop: "{{ configure_users_public_keys.results }}"
+  loop_control:
+    label: "{{ item.item.0.name }}"
+
+  ansible.posix.authorized_key:
+    user: "{{ item.item.0.name }}"
+    key: "{{ item.content }}"
+    state: present
+
+
+- name: Configure sudo users
+  loop: "{{ configure_users_list }}"
+
+  community.general.sudoers:
+    name: "{{ item.name }}"
+    state: present
+    user: "{{ item.name }}"
+    commands: ALL
+    nopassword: "{{ item.sudo_nopasswd }}"

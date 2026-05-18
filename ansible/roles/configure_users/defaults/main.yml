@@ -1,0 +1,11 @@
+---
+configure_users_list:
+  - name: zakhar
+    groups:
+      - sudo
+      - docker
+
+    public_keys:
+      - https://github.com/zakharsk.keys
+
+    sudo_nopasswd: true

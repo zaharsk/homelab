@@ -1,0 +1,4 @@
+{
+  "ansible.lightspeed.enabled": false,
+  "ansible.lightspeed.suggestions.enabled": false
+}

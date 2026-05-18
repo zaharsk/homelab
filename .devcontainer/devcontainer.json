@@ -23,7 +23,7 @@
     "ghcr.io/jsburckhardt/devcontainer-features/just:1": {},
     "ghcr.io/devcontainers/features/terraform:1": {},
     "ghcr.io/sliekens/devcontainer-features/ansible-core:1": {
-      "collections": "community.general",
+      "collections": "community.general,ansible.posix",
       "roles": ""
     },
     "ghcr.io/sliekens/devcontainer-features/ansible-lint:1": {}
