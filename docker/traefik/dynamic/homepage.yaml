@@ -1,0 +1,16 @@
+http:
+  services:
+    homepage:
+      loadBalancer:
+        servers:
+          - url: http://100.76.112.49:3000
+  
+  routers:
+    homepage-private:
+      entryPoints:
+        - https-ep
+      rule: "Host(`homepage.unco.games`)"
+      service: homepage
+      middlewares:
+        - securityHeaders
+        - privateAccess

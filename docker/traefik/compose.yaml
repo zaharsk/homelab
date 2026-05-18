@@ -1,0 +1,50 @@
+services:
+  traefik:
+    image: traefik:latest
+    container_name: traefik
+    restart: unless-stopped
+
+    security_opt:
+      - no-new-privileges:true
+
+    # networks:
+    #   proxy:
+    #     aliases:
+    #       - 'auth.unco.games'
+    #   authelia: {}
+
+    ports:
+      - 80:80
+      - 443:443
+      - 127.0.0.1:8080:8080 # Traefik Dashboard and healthcheck
+      # - 25565:25565/tcp # Minecraft
+      # - 222:222/tcp
+
+    environment:
+      - TZ=Europe/Belgrade
+      - CF_DNS_API_TOKEN=${CF_DNS_API_TOKEN}
+      
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik.yaml:/etc/traefik/traefik.yaml:ro
+      - ./dynamic:/etc/traefik/dynamic:ro
+      - ./certs:/etc/traefik/certs:rw
+      - ./logs:/logs:rw
+
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.dashboard.rule=Host(`traefik.unco.games`)
+      - traefik.http.routers.dashboard.service=api@internal
+      - traefik.http.routers.dashboard.middlewares=privateAccess@file
+
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8080/ping"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+# networks:
+#   proxy:
+#     external: true

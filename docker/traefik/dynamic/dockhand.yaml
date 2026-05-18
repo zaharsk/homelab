@@ -1,0 +1,24 @@
+http:
+  services:
+    dockhand:
+      loadBalancer:
+        servers:
+          - url: http://100.76.122.97:3000
+  
+  routers:
+    dockhand-webhook:
+      entryPoints:
+        - https-ep
+      rule: "Host(`dockhand.unco.games`) && PathPrefix(`/api/git/stacks`)"
+      service: dockhand
+      middlewares:
+        - securityHeaders
+
+    dockhand-private:
+      entryPoints:
+        - https-ep
+      rule: "Host(`dockhand.unco.games`)"
+      service: dockhand
+      middlewares:
+        - securityHeaders
+        - privateAccess

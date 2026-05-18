@@ -1,0 +1,15 @@
+http:
+  services:
+    vault:
+      loadBalancer:
+        servers:
+          - url: http://100.76.122.97:8200
+  
+  routers:
+    vault:
+      entryPoints:
+        - https-ep
+      rule: "Host(`vault.unco.games`)"
+      service: vault
+      middlewares:
+        - securityHeaders
