@@ -92,10 +92,10 @@ secrets/tfbackend.cf-r2.hcl
 secrets/gcp.zulu.pem
 secrets/oci.delta.pem
 secrets/oci.zulu.pem
-terraform/terraform.tfvars
-terraform/gcp_zulu.auto.tfvars
-terraform/oci_delta.auto.tfvars
-terraform/oci_zulu.auto.tfvars
+terraform/infra/terraform.tfvars
+terraform/infra/gcp_zulu.auto.tfvars
+terraform/infra/oci_delta.auto.tfvars
+terraform/infra/oci_zulu.auto.tfvars
 secrets/ansible.vars.yml
 !*.enc.*
 !*.enc
