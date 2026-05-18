@@ -3,9 +3,6 @@
   hosts: ubuntu
   become: true
 
-  tags:
-    - ubuntu
-
   vars_files:
     - ../../secrets/ansible.vars.yml
 

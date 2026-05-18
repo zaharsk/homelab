@@ -1,0 +1,6 @@
+---
+- name: Restart hawser
+  ansible.builtin.systemd:
+    name: hawser
+    state: restarted
+    daemon_reload: true

@@ -1,0 +1,80 @@
+---
+- name: Determine Hawser architecture
+  ansible.builtin.set_fact:
+    install_hawser_arch: >-
+      {{
+        install_hawser_arch_map[
+          ansible_facts['architecture']
+        ]
+      }}
+
+- name: Create temporary directory
+  ansible.builtin.tempfile:
+    state: directory
+    suffix: hawser
+  register: install_hawser_tmp_dir
+
+- name: Build Hawser download URL
+  ansible.builtin.set_fact:
+    install_hawser_download_url: >-
+      {{
+        'https://github.com/Finsys/hawser/releases/download/v%s/hawser_%s_linux_%s.tar.gz'
+        | format(
+            install_hawser_version,
+            install_hawser_version,
+            install_hawser_arch
+          )
+      }}
+
+- name: Download Hawser archive
+  ansible.builtin.get_url:
+    url: "{{ install_hawser_download_url }}"
+    dest: "{{ install_hawser_tmp_dir.path }}/hawser.tar.gz"
+    mode: "0644"
+
+- name: Extract Hawser archive
+  ansible.builtin.unarchive:
+    src: "{{ install_hawser_tmp_dir.path }}/hawser.tar.gz"
+    dest: "{{ install_hawser_tmp_dir.path }}"
+    remote_src: true
+
+- name: Install Hawser binary
+  ansible.builtin.copy:
+    src: "{{ install_hawser_tmp_dir.path }}/hawser"
+    dest: "{{ install_hawser_install_dir }}/hawser"
+    mode: "0755"
+    remote_src: true
+  notify: Restart hawser
+
+- name: Create Hawser config directory
+  ansible.builtin.file:
+    path: "{{ install_hawser_config_dir }}"
+    state: directory
+    mode: "0755"
+
+- name: Create Hawser stacks directory
+  ansible.builtin.file:
+    path: "{{ install_hawser_data_dir }}"
+    state: directory
+    mode: "0755"
+
+- name: Install Hawser config
+  ansible.builtin.template:
+    src: config.j2
+    dest: "{{ install_hawser_config_dir }}/config"
+    mode: "0600"
+  notify: Restart hawser
+
+- name: Install Hawser systemd service
+  ansible.builtin.template:
+    src: hawser.service.j2
+    dest: /etc/systemd/system/hawser.service
+    mode: "0644"
+  notify: Restart hawser
+
+- name: Ensure Hawser service is enabled and started
+  ansible.builtin.systemd:
+    name: hawser
+    enabled: true
+    state: started
+    daemon_reload: true

@@ -1,0 +1,10 @@
+---
+- name: Install worker nodes software and agents
+  hosts: worker
+  become: true
+
+  vars_files:
+    - ../../secrets/ansible.vars.yml
+
+  roles:
+    - install_hawser

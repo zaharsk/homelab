@@ -1,0 +1,12 @@
+---
+install_hawser_version: "0.2.42"
+install_hawser_port: 2376
+install_hawser_mode: standard
+install_hawser_install_dir: /usr/local/bin
+install_hawser_config_dir: /etc/hawser
+install_hawser_data_dir: /data/stacks
+install_hawser_docker_socket: /var/run/docker.sock
+
+install_hawser_arch_map:
+  x86_64: amd64
+  aarch64: arm64
