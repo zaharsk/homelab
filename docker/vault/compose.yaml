@@ -1,7 +1,7 @@
 services:
   vault:
     image: hashicorp/vault:latest
-    container_name: vault-test
+    container_name: vault
     restart: unless-stopped
 
     security_opt:
