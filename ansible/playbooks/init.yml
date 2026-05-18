@@ -1,0 +1,9 @@
+- name: Initial host configuration
+  hosts: ubuntu
+  become: true
+
+  roles:
+    - configure_sshd
+    - configure_host
+    - configure_unattended_upgrades
+    - upgrade_pckgs

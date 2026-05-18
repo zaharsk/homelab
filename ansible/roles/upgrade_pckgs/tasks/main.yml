@@ -1,0 +1,32 @@
+# roles/apt_update/tasks/main.yml
+---
+- name: Update apt package index
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
+
+- name: Upgrade all packages
+  ansible.builtin.apt:
+    upgrade: dist
+    autoremove: false
+    autoclean: false
+
+- name: Remove unused packages
+  ansible.builtin.apt:
+    autoremove: true
+    purge: true
+
+- name: Clean apt cache
+  ansible.builtin.apt:
+    autoclean: true
+
+- name: Check whether reboot is required
+  ansible.builtin.stat:
+    path: /var/run/reboot-required
+  register: upgrade_pckgs_reboot_required
+
+- name: Reboot server if required
+  ansible.builtin.reboot:
+    msg: "Reboot initiated by Ansible after package upgrades"
+    reboot_timeout: 1800
+  when: upgrade_pckgs_reboot_required.stat.exists

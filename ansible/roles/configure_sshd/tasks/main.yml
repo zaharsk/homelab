@@ -1,0 +1,61 @@
+---
+- name: Ensure sudo is installed
+  ansible.builtin.apt:
+    name: sudo
+    state: present
+    update_cache: true
+
+- name: Configure SSH daemon settings
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^#?{{ item.key }}"
+    line: "{{ item.key }} {{ item.value }}"
+    state: present
+    backup: true
+    mode: "0600"
+  loop:
+    - key: PermitRootLogin
+      value: "no"
+
+    - key: PasswordAuthentication
+      value: "no"
+
+    - key: KbdInteractiveAuthentication
+      value: "no"
+
+    - key: UsePAM
+      value: "yes"
+
+    - key: PubkeyAuthentication
+      value: "yes"
+
+    - key: X11Forwarding
+      value: "no"
+
+    - key: AllowAgentForwarding
+      value: "no"
+
+    - key: AllowTcpForwarding
+      value: "yes"
+
+    - key: MaxAuthTries
+      value: "3"
+
+    - key: LoginGraceTime
+      value: "20s"
+
+    - key: ClientAliveInterval
+      value: "300"
+
+    - key: ClientAliveCountMax
+      value: "2"
+
+  notify:
+    - Validate sshd configuration
+    - Restart ssh
+
+- name: Ensure SSH service is enabled
+  ansible.builtin.systemd:
+    name: ssh
+    enabled: true
+    state: started

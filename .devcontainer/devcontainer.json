@@ -22,7 +22,11 @@
     "ghcr.io/devcontainers-extra/features/sops:1": {},
     "ghcr.io/jsburckhardt/devcontainer-features/just:1": {},
     "ghcr.io/devcontainers/features/terraform:1": {},
-    "ghcr.io/devcontainers-extra/features/ansible:2": {}
+    "ghcr.io/sliekens/devcontainer-features/ansible-core:1": {
+      "collections": "community.general",
+      "roles": ""
+    },
+    "ghcr.io/sliekens/devcontainer-features/ansible-lint:1": {}
   },
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
@@ -31,7 +35,8 @@
     "GIT_USER_EMAIL": "zaharsk@gmail.com",
     "WORKSPACE_FOLDER": "${containerWorkspaceFolder}",
     "SECRETS_FOLDER": "secrets",
-    "SOPS_AGE_KEY_FILE": "secrets/age.key"
+    "SOPS_AGE_KEY_FILE": "secrets/age.key",
+    "ANSIBLE_CONFIG": "${containerWorkspaceFolder}/ansible.cfg"
   },
   // Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": "./scripts/post-create-command.sh",
