@@ -36,7 +36,8 @@ entryPoints:
     forwardedHeaders:
       trustedIPs: &trustedIPs
         # NetBird's Network IPs
-        - 100.65.0.0/16
+        - 100.76.0.0/16
+        - fd9d:7f26:187d:26a7::/64
         # Cloudflare: https://www.cloudflare.com/ips/
         - 103.21.244.0/22
         - 173.245.48.0/20
