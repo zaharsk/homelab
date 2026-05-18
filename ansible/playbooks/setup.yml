@@ -13,5 +13,4 @@
     - install_common_pckgs
     - install_netbird
     - configure_netbird
-
-    # - install_docker
+    - install_docker
