@@ -16,3 +16,13 @@ resource "vault_identity_oidc_client" "dockhand" {
     "https://dockhand.unco.games/api/auth/oidc/callback"
   ]
 }
+
+output "dockhand" {
+  value = {
+    client_id     = vault_identity_oidc_client.dockhand.client_id
+    client_secret = vault_identity_oidc_client.dockhand.client_secret
+  }
+  sensitive = true
+}
+
+## terraform output dockhand

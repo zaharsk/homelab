@@ -17,11 +17,4 @@ resource "vault_identity_oidc_provider" "default" {
   ]
 }
 
-## terraform output dockhand
-output "dockhand" {
-  value = {
-    client_id     = vault_identity_oidc_client.dockhand.client_id
-    client_secret = vault_identity_oidc_client.dockhand.client_secret
-  }
-  sensitive = true
-}
+## https://vault.unco.games/v1/identity/oidc/provider/default/.well-known/openid-configuration
