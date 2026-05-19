@@ -4,7 +4,6 @@ resource "vault_generic_endpoint" "userpass_users" {
   path         = "auth/${vault_auth_backend.userpass.path}/users/${each.key}"
   disable_read = true
   data_json = jsonencode({
-    policies = each.value.policies
     password = each.value.password
   })
 }
