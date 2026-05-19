@@ -10,3 +10,11 @@ terraform {
     use_path_style              = true
   }
 }
+
+resource "vault_generic_endpoint" "client_count_tracking" {
+  path = "sys/internal/counters/config"
+
+  data_json = jsonencode({
+    enabled = "enable"
+  })
+}
