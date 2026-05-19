@@ -12,7 +12,9 @@ resource "vault_identity_entity" "users" {
   for_each = var.users
   name     = each.key
   metadata = {
-    email = each.value.email
+    email              = each.value.email
+    name               = each.value.name
+    preferred_username = each.value.preferred_username
   }
 }
 

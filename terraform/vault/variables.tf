@@ -21,7 +21,9 @@ variable "groups" {
 
 variable "users" {
   type = map(object({
-    password = string
-    email    = string
+    password           = string
+    email              = string
+    name               = string
+    preferred_username = string
   }))
 }
