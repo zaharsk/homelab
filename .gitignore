@@ -97,6 +97,7 @@ terraform/infra/gcp_zulu.auto.tfvars
 terraform/infra/oci_delta.auto.tfvars
 terraform/infra/oci_zulu.auto.tfvars
 secrets/ansible.vars.yml
+terraform/vault/terraform.tfvars
 !*.enc.*
 !*.enc
 ### END SOPS ###

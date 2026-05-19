@@ -12,6 +12,7 @@ terraform/infra/gcp_zulu.auto.tfvars
 terraform/infra/oci_delta.auto.tfvars
 terraform/infra/oci_zulu.auto.tfvars
 secrets/ansible.vars.yml
+terraform/vault/terraform.tfvars
 '
 
 secrets-encode:
@@ -20,8 +21,14 @@ secrets-encode:
 secrets-decode:
     ./scripts/sops_decode.sh '{{ secrets }}'
 
-tf-infra-init:
+infra-tf-init:
     terraform -chdir=${WORKSPACE_FOLDER}/terraform/infra init \
         -upgrade \
         -reconfigure \
-        -backend-config="${WORKSPACE_FOLDER}/${SECRETS_FOLDER}/tfbackend.cf-r2.hcl" 
+        -backend-config="${WORKSPACE_FOLDER}/${SECRETS_FOLDER}/tfbackend.cf-r2.hcl"
+
+vault-tf-init:
+    terraform -chdir=${WORKSPACE_FOLDER}/terraform/vault init \
+        -upgrade \
+        -reconfigure \
+        -backend-config="${WORKSPACE_FOLDER}/${SECRETS_FOLDER}/tfbackend.cf-r2.hcl"
