@@ -1,4 +1,4 @@
-# Oracle Cloud based virtula Homelab
+# Oracle Cloud based virtual Homelab
 
 ## Preparation
 

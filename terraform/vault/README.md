@@ -30,7 +30,7 @@ vault auth enable approle
 
 ```bash
 vault write auth/approle/role/terraform \
-    policies="default,admin"
+    policies="admin"
 ```
 
 ## 5. Recieve `terraform` role-id
