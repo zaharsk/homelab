@@ -28,9 +28,9 @@ resource "vault_identity_entity" "users" {
 
   name = each.key
   metadata = {
-    email              = each.value.email
-    name               = each.value.name
-    preferred_username = each.value.preferred_username
+    email        = each.value.email
+    display_name = each.value.display_name
+    username     = each.value.username
   }
 }
 

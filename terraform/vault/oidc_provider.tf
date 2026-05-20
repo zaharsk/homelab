@@ -8,12 +8,14 @@ resource "vault_identity_oidc_provider" "default" {
   https_enabled = true
 
   allowed_client_ids = [
-    vault_identity_oidc_client.dockhand.client_id
+    vault_identity_oidc_client.dockhand.client_id,
+    vault_identity_oidc_client.grafana.client_id
   ]
 
   scopes_supported = [
     vault_identity_oidc_scope.profile.name,
-    vault_identity_oidc_scope.email.name
+    vault_identity_oidc_scope.email.name,
+    vault_identity_oidc_scope.groups.name
   ]
 }
 
