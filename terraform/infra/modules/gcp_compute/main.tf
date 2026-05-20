@@ -1,5 +1,5 @@
 data "google_compute_image" "ubuntu" {
-  family  = "ubuntu-2404-lts-amd64"
+  family  = "ubuntu-minimal-2604-lts-amd64"
   project = "ubuntu-os-cloud"
 }
 
@@ -9,11 +9,6 @@ resource "google_compute_instance" "this" {
   name         = each.key
   machine_type = each.value.machine_type
   zone         = var.gcp_zone
-
-  tags = [
-    "ssh",
-    # "web"
-  ]
 
   boot_disk {
     initialize_params {

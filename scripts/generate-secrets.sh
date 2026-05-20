@@ -1,10 +1,15 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -ueo pipefail
 
-SECRETS_PATH="${WORKSPACE_FOLDER}/${SECRETS_FOLDER}"
-
 mkdir -p "${SECRETS_PATH}"
 
-age-keygen -o "${WORKSPACE_FOLDER}/${SOPS_AGE_KEY_FILE}"
-ssh-keygen -t ed25519 -C "ubuntu@homelab" -N "" -f "${SECRETS_PATH}/ssh.ubuntu"
+age-keygen -o "${SOPS_AGE_KEY_FILE}"
+ssh-keygen -t ed25519 -C "ubuntu@homelab" -N "" -f "/dev/shm/ubuntu_ed25519"
+sops encrypt \
+    --age $(age-keygen -y "${SOPS_AGE_KEY_FILE}") \
+    /dev/shm/ubuntu_ed25519 > "${SECRETS_PATH}/ubuntu_ed25519"
+
+sops encrypt \
+    --age $(age-keygen -y "${SOPS_AGE_KEY_FILE}") \
+    /dev/shm/ubuntu_ed25519.pub > "${SECRETS_PATH}/ubuntu_ed25519.pub"

@@ -32,3 +32,9 @@ vault-tf-init:
         -upgrade \
         -reconfigure \
         -backend-config="${WORKSPACE_FOLDER}/${SECRETS_FOLDER}/tfbackend.cf-r2.hcl"
+
+encrypt file_path:
+    file_name=$(basename "{{ file_path }}") && \
+    sops encrypt \
+        --age $(age-keygen -y "${SOPS_AGE_KEY_FILE}") \
+        "{{ file_path }}" > "${WORKSPACE_FOLDER}/secrets/$file_name"

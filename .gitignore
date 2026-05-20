@@ -54,8 +54,8 @@ crash.*.log
 # password, private keys, and other secrets. These should not be part of version
 # control as they are data points which are potentially sensitive and subject
 # to change depending on the environment.
-*.tfvars
-*.tfvars.json
+# *.tfvars
+# *.tfvars.json
 
 # Ignore override files as they are usually used to override resources locally and so
 # are not checked in
@@ -84,20 +84,4 @@ terraform.rc
 # Uncomment the line below if you want to ignore planout files.
 # planout
 
-### START SOPS ###
-secrets/age.key
-secrets/ssh.ubuntu
-secrets/ssh.ubuntu.pub
-secrets/tfbackend.cf-r2.hcl
-secrets/gcp.zulu.pem
-secrets/oci.delta.pem
-secrets/oci.zulu.pem
-terraform/infra/terraform.tfvars
-terraform/infra/gcp_zulu.auto.tfvars
-terraform/infra/oci_delta.auto.tfvars
-terraform/infra/oci_zulu.auto.tfvars
-secrets/ansible.vars.yml
-terraform/vault/terraform.tfvars
-!*.enc.*
-!*.enc
-### END SOPS ###
+.decrypted~*

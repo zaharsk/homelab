@@ -13,3 +13,13 @@
 ```sh
 just secrets-encode
 ```
+
+---
+
+```bash
+code /dev/shm/secret.yml
+```
+
+```bash
+just encrypt /dev/shm/secret.yml
+```

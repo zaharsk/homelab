@@ -8,10 +8,10 @@ import subprocess
 
 env = os.environ.copy()
 
-TF_PATH = Path(f"{env["WORKSPACE_FOLDER"]}/terraform/infra")
+TF_PATH = Path(f"{env["WORKSPACE_PATH"]}/terraform/infra")
 SSH_PRIVATE_KEY_PATH = str(
     Path(
-        f"{env["WORKSPACE_FOLDER"]}/{env["SECRETS_FOLDER"]}/ssh.ubuntu"
+        "/dev/shm/ubuntu_ed25519"
     )
 )
 

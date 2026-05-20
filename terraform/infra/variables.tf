@@ -1,5 +1,6 @@
 variable "ssh_public_key_path" {
-  type = string
+  type    = string
+  default = "/dev/shm/ubuntu_ed25519.pub"
 }
 
 # --> OCI Zulu
