@@ -5,8 +5,10 @@ set -ueo pipefail
 git config --global user.name "${GIT_USER_NAME}"
 git config --global user.email "${GIT_USER_EMAIL}"
 
-git config --global pull.rebase true
 git config --global core.autocrlf input
+git config --global core.symlinks true
+
+git config --global pull.rebase true
 
 if ssh-add -L >/dev/null 2>&1; then
     mkdir -p ~/.ssh
