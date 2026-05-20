@@ -24,5 +24,3 @@ output "dockhand" {
   }
   sensitive = true
 }
-
-## terraform output dockhand

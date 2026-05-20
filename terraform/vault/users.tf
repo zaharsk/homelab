@@ -13,8 +13,9 @@ resource "random_password" "passwords" {
 }
 
 resource "vault_generic_endpoint" "userpass_users" {
-  depends_on   = [vault_auth_backend.userpass]
-  for_each     = var.users
+  depends_on = [vault_auth_backend.userpass]
+  for_each   = var.users
+
   path         = "auth/${vault_auth_backend.userpass.path}/users/${each.key}"
   disable_read = true
   data_json = jsonencode({
@@ -24,7 +25,8 @@ resource "vault_generic_endpoint" "userpass_users" {
 
 resource "vault_identity_entity" "users" {
   for_each = var.users
-  name     = each.key
+
+  name = each.key
   metadata = {
     email              = each.value.email
     name               = each.value.name
@@ -33,7 +35,8 @@ resource "vault_identity_entity" "users" {
 }
 
 resource "vault_identity_entity_alias" "userpass_aliases" {
-  for_each       = var.users
+  for_each = var.users
+
   name           = each.key
   mount_accessor = vault_auth_backend.userpass.accessor
   canonical_id   = vault_identity_entity.users[each.key].id
@@ -47,6 +50,3 @@ output "users" {
     username => password.result
   }
 }
-
-## terraform output users
-## vault write auth/userpass/users/USERNAME/password password="NEW_SUPER_SECRET_PASSWORD"

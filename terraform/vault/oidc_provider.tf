@@ -17,4 +17,9 @@ resource "vault_identity_oidc_provider" "default" {
   ]
 }
 
-## https://vault.unco.games/v1/identity/oidc/provider/default/.well-known/openid-configuration
+output "oidc_provider" {
+  value = {
+    issuer = vault_identity_oidc_provider.default.issuer
+    info   = "${vault_identity_oidc_provider.default.issuer}/.well-known/openid-configuration"
+  }
+}

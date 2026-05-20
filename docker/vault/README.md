@@ -44,3 +44,17 @@ vault read auth/approle/role/terraform/role-id
 ```bash
 vault write -f auth/approle/role/terraform/secret-id
 ```
+
+---
+
+## Reveal sensitive output
+
+```bash
+terraform output OUTPUT_NAME
+```
+
+## Change user password
+
+```bash
+vault write auth/userpass/users/USERNAME/password password="NEW_SUPER_SECRET_PASSWORD"
+```
