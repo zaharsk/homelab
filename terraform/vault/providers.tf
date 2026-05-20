@@ -9,3 +9,7 @@ provider "vault" {
     }
   }
 }
+
+provider "random" {
+  # Configuration options
+}
