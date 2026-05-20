@@ -1,0 +1,26 @@
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    restart: unless-stopped
+
+    ports:
+      - 3000:3000
+
+    volumes:
+      # Make sure your local config directory exists
+      - ./config:/app/config
+      # (optional) For docker integrations
+      - /var/run/docker.sock:/var/run/docker.sock:ro 
+      
+    environment:
+      # required, may need port. See gethomepage.dev/installation/#homepage_allowed_hosts
+      HOMEPAGE_ALLOWED_HOSTS: homepage.unco.games
+
+    # https://github.com/gethomepage/homepage/discussions/6544#discussioncomment-16510143
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", http://127.0.0.1:3000/api/healthcheck]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s

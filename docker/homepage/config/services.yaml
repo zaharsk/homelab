@@ -1,0 +1,101 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/services/
+
+- Services:
+    - Vault:
+        icon: https://vault.unco.games/ui/favicon-c02e22ca67f83a0fb6f2fd265074910a.png
+        href: https://vault.unco.games/
+        siteMonitor: https://vault.unco.games/
+        description: Identity-based secrets management
+
+    # - Vaultwarden:
+    #     icon: https://vaultwarden.unco.games/images/favicon-32x32.png
+    #     href: https://vaultwarden.unco.games/
+    #     siteMonitor: https://vaultwarden.unco.games/
+    #     description: An alternative server implementation of the Bitwarden Client API
+
+    - Gramps Web:
+        icon: https://www.grampsweb.org/favicon.ico
+        href: https://tree.valan.rs/
+        siteMonitor: https://tree.valan.rs/
+        description: The free, open-source genealogy system for building your family tree
+    
+    # - n8n:
+    #     icon: https://n8n.io/favicon.ico
+    #     href: https://n8n.unco.games/
+    #     siteMonitor: https://n8n.unco.games/
+    #     description: AI Workflow Automation Platform & Tools
+    
+    # - Forgejo:
+    #     icon: https://forgejo.org/favicon.ico
+    #     href: https://forgejo.unco.games/
+    #     siteMonitor: https://forgejo.unco.games/
+    #     description: Beyond coding. We forge.
+    #     widget:
+    #         type: gitea
+    #         url: https://forgejo.unco.games
+    #         key: a922437859224afe8f4380a8b4e8ea96271b1234
+
+- Infrastructure:
+    # - Traefik:
+    #     icon: https://traefik.io/favicon.svg
+    #     href: https://traefik.unco.games/
+    #     siteMonitor: https://traefik.unco.games/
+    #     description: The Cloud Native Application Proxy
+    #     widget:
+    #         type: traefik
+    #         url: https://traefik.unco.games/
+
+    - Dockhand:
+        icon: https://dockhand.unco.games/favicon-32x32.png
+        href: https://dockhand.unco.games/
+        siteMonitor: https://dockhand.unco.games/
+        description: Modern Docker Management Application
+
+    # - Beszel:
+    #     icon: https://beszel.dev/icon.svg
+    #     href: https://beszel.unco.games/
+    #     siteMonitor: https://beszel.unco.games/
+    #     description: Simple, lightweight server monitoring
+
+- External:
+    - Cloudflare:
+        icon: https://dash.cloudflare.com/favicon.ico
+        href: https://dash.cloudflare.com/
+        description: Connect, protect, and build everywhere
+
+    - Netbird:
+        icon: https://app.netbird.io/favicon.ico
+        href: https://app.netbird.io/
+        description: Mesh VPN
+
+    - OCI:
+        icon: https://www.oracle.com/asset/web/favicons/favicon-32.png
+        href: https://www.oracle.com/cloud/
+        description: Oracle Cloud Infrastructure
+
+    - Google Cloud:
+        icon: https://ssl.gstatic.com/pantheon/images/favicon/default.png
+        href: https://console.cloud.google.com/
+        description: Cloud Computing Services
+
+    - AlwaysData:
+        icon: https://static.alwaysdata.com/media/reseller/1/theme/favicon_kfxZA8s.png
+        href: https://admin.alwaysdata.com/
+        description: the European Cloud
+
+    - Supabase:
+        icon: https://supabase.com/dashboard/favicon/apple-icon-57x57.png
+        href: https://supabase.com/dashboard
+        description: The Postgres Development Platform
+
+    - Grafana:
+        icon: https://grafana.com/static/assets/img/fav32.png
+        href: https://zaharsk.grafana.net/
+        description: The open and composable observability platform
+
+    - Aiven:
+        icon: https://aiven.io/favicons/favicon-32x32.png
+        href: https://aiven.io/
+        description: Your AI-ready Open Source Data Platform

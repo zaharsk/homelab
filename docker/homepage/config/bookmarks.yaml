@@ -1,0 +1,47 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/bookmarks
+
+- Developer:
+  - Github:
+    - icon: https://github.githubassets.com/favicons/favicon-dark.png
+      href: https://github.com/
+
+  - Domain name search:
+    - icon: https://instantdomainsearch.com/favicon.png
+      href: https://instantdomainsearch.com/
+      description: The fastest domain name search tool on the internet
+    
+  - Webhook.Cool:
+    - icon: https://webhook.cool/favicon-32x32.png
+      href: https://webhook.cool/
+      description: Online Webhook Tester
+
+- Social:
+  - Reddit:
+    - icon: https://www.redditstatic.com/shreddit/assets/favicon/192x192.png
+      href: https://reddit.com/
+      description: The heart of the internet
+
+  - X:
+    - icon: https://abs.twimg.com/favicons/twitter.3.ico
+      href: https://x.com/
+      description: See what's happening
+
+- Entertainment:
+  - YouTube:
+    - icon: https://www.youtube.com/s/desktop/191847ec/img/favicon.ico
+      href: https://youtube.com/
+      description: Share your videos with friends, family, and the world.
+
+- Homelab:
+  - OpenAlternative:
+    - icon: https://openalternative.co/favicon.png
+      href: https://openalternative.co/
+      description: Open Source Alternatives to Popular Software
+
+  - Self-Host:
+    - icon: https://selfh.st/content/images/size/w256h256/2023/09/favicon-1.png
+      href: https://selfh.st/
+      description: Weekly self-hosted content + news delivered straight to your inbox
+
