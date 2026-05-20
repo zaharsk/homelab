@@ -1,0 +1,16 @@
+http:
+  services:
+    grafana:
+      loadBalancer:
+        servers:
+          - url: http://100.76.112.49:3000
+  
+  routers:
+    grafana-private:
+      entryPoints:
+        - https-ep
+      rule: "Host(`grafana.unco.games`)"
+      service: grafana
+      middlewares:
+        - securityHeaders
+        - privateAccess
