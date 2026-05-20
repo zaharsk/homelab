@@ -5,7 +5,7 @@ services:
     restart: unless-stopped
     environment:
       - GF_LOG_LEVEL=debug
-      # - GF_SERVER_ROOT_URL=http://my.grafana.server/
+      - GF_SERVER_ROOT_URL=https://grafana.unco.games
     ports:
       - '3000:3000'
     volumes:
