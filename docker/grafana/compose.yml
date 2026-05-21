@@ -10,6 +10,6 @@ services:
       - '3000:3000'
     volumes:
       - 'storage:/var/lib/grafana'
-      - './conf/custom.ini:/etc/grafana/custom.ini'
+      - './conf/custom.ini:/usr/share/grafana/conf/custom.ini'
 volumes:
   storage: {}
