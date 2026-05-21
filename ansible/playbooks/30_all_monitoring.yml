@@ -1,5 +1,5 @@
 ---
-- name: Install Alloy
+- name: Install monitoring agents
   hosts: all
   become: true
 
@@ -8,3 +8,8 @@
 
   roles:
     - install_alloy
+    - role: community.beszel.agent
+      vars:
+        agent_public_key: "{{ install_beszel_agent_public_key }}"
+        agent_token: "{{ install_beszel_agent_token }}"
+        agent_hub_url: "http://100.76.112.49:8090"
