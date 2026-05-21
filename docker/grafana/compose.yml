@@ -1,4 +1,40 @@
 services:
+  loki:
+    image: grafana/loki:latest
+    container_name: loki
+    restart: unless-stopped
+    ports:
+      - "3100:3100/tcp"
+    volumes:
+      - "loki_storage:/loki"
+      - "./loki-config.yaml:/etc/loki/local-config.yaml"
+    command: -config.file=/etc/loki/local-config.yaml
+    healthcheck:
+      test: [ "CMD", "/usr/bin/loki", "-health" ]
+      start_period: 30s
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: unless-stopped
+    ports:
+    - "9090:9090/tcp"
+    volumes:
+      - "prom_storage:/prometheus"
+      - "./prom-config.yaml:/etc/prometheus/prometheus.yml"
+    command:
+      - "--web.enable-remote-write-receiver"
+      - "--config.file=/etc/prometheus/prometheus.yml"
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:9090/-/healthy"]
+      start_period: 30s
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   grafana:
     image: grafana/grafana
     container_name: grafana
@@ -21,10 +57,50 @@ services:
       GF_AUTH_GENERIC_OAUTH_ALLOW_ASSIGN_GRAFANA_ADMIN: true
       GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: "contains(groups[*], 'grafana_admins') && 'GrafanaAdmin' || 'Viewer'"
       GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_STRICT: true
+
     ports:
-      - '3000:3000'
+      - "3000:3000"
+
     volumes:
-      - 'storage:/var/lib/grafana'
-      - './conf/custom.ini:/usr/share/grafana/conf/custom.ini'
+      - "gf_storage:/var/lib/grafana"
+      - "./conf/custom.ini:/usr/share/grafana/conf/custom.ini"
+
+    healthcheck:
+      test: [ "CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:3000/api/health || exit 1" ]
+      start_period: 30s
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+    entrypoint:
+       - sh
+       - -euc
+       - |
+         mkdir -p /etc/grafana/provisioning/datasources
+         cat <<EOF > /etc/grafana/provisioning/datasources/ds.yaml
+         apiVersion: 1
+         datasources:
+         - name: Loki
+           type: loki
+           access: proxy
+           orgId: 1
+           url: http://loki:3100
+           basicAuth: false
+           isDefault: false
+           version: 1
+           editable: false
+         - name: Prometheus
+           type: prometheus
+           orgId: 1
+           url: http://prometheus:9090
+           basicAuth: false
+           isDefault: true
+           version: 1
+           editable: false
+         EOF
+         /run.sh
+
 volumes:
-  storage: {}
+  loki_storage: {}
+  prom_storage: {}
+  gf_storage: {}
