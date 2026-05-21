@@ -6,7 +6,7 @@ services:
     environment:
       APP_URL: "https://beszel.unco.games"
       USER_CREATION: true
-
+      LOG_LEVEL: "debug"
     ports:
       - 8090:8090
 
