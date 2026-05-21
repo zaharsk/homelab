@@ -1,0 +1,7 @@
+---
+- name: Setup common software and parameters
+  hosts: all
+  become: true
+
+  roles:
+    - upgrade_pckgs

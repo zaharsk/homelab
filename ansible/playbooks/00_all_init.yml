@@ -1,3 +1,4 @@
+---
 - name: Initial host configuration
   hosts: ubuntu
   become: true
