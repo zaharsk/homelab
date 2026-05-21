@@ -19,28 +19,28 @@ services:
       start_period: 5s # Check 5 seconds after the container starts
       interval: 120s # Then check every 120 seconds after that
 
-  beszel-agent:
-    image: henrygd/beszel-agent
-    container_name: beszel-agent
-    restart: unless-stopped
-    network_mode: host
-    security_opt:
-      - apparmor:unconfined
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./beszel_agent_data:/var/lib/beszel-agent
-      - /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket:ro
-      # monitor other disks / partitions by mounting a folder in /extra-filesystems
-      # - /mnt/disk/.beszel:/extra-filesystems/sda1:ro
-    environment:
-      LISTEN: 45876
-      KEY: ${BESZEL_PUBLIC_KEY}
-      TOKEN: ${BESZEL_TOKEN}
-      HUB_URL: http://localhost:8090
+  # beszel-agent:
+  #   image: henrygd/beszel-agent
+  #   container_name: beszel-agent
+  #   restart: unless-stopped
+  #   network_mode: host
+  #   security_opt:
+  #     - apparmor:unconfined
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock:ro
+  #     - ./beszel_agent_data:/var/lib/beszel-agent
+  #     - /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket:ro
+  #     # monitor other disks / partitions by mounting a folder in /extra-filesystems
+  #     # - /mnt/disk/.beszel:/extra-filesystems/sda1:ro
+  #   environment:
+  #     LISTEN: 45876
+  #     KEY: ${BESZEL_PUBLIC_KEY}
+  #     TOKEN: ${BESZEL_TOKEN}
+  #     HUB_URL: http://localhost:8090
       
-    healthcheck:
-      test: ['CMD', '/agent', 'health']
-      interval: 120s
+  #   healthcheck:
+  #     test: ['CMD', '/agent', 'health']
+  #     interval: 120s
 
 volumes:
   beszel_data:
