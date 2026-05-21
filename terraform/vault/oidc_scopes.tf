@@ -6,7 +6,9 @@ resource "vault_identity_oidc_scope" "profile" {
   "display_name": {{identity.entity.metadata.display_name}},
   "login": {{identity.entity.metadata.username}},
   "username": {{identity.entity.metadata.username}},
-  "preferred_username": {{identity.entity.metadata.username}}
+  "preferred_username": {{identity.entity.metadata.username}},
+  "email": {{identity.entity.metadata.email}},
+  "email_verified": true
 }
 EOT
 }
