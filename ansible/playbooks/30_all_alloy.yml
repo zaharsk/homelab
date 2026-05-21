@@ -1,0 +1,10 @@
+---
+- name: Install Alloy
+  hosts: all
+  become: true
+
+  vars_files:
+    - /dev/shm/ansible.vars.yml
+
+  roles:
+    - install_alloy

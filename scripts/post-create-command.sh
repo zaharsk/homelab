@@ -23,4 +23,6 @@ else
     echo "Git commit signing was skipped."
 fi
 
+ansible-galaxy collection install -r ./ansible/requirements.yml
+
 ./scripts/decrypt_secrets.sh

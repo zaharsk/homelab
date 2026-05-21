@@ -1,0 +1,34 @@
+---
+- name: Render Alloy config
+  ansible.builtin.set_fact:
+    install_alloy_config: "{{ lookup('template', 'config.alloy.j2') }}"
+
+- name: Install Alloy
+  ansible.builtin.include_role:
+    name: grafana.grafana.alloy
+  vars:
+    alloy_config: "{{ install_alloy_config }}"
+
+- name: Create alloy systemd override directory
+  ansible.builtin.file:
+    path: /etc/systemd/system/alloy.service.d
+    state: directory
+    mode: "0755"
+
+- name: Configure alloy to run as root
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/alloy.service.d/override.conf
+    mode: "0644"
+    content: |
+      [Service]
+      User=root
+      Group=root
+
+- name: Reload systemd
+  ansible.builtin.systemd:
+    daemon_reload: true
+
+- name: Restart alloy
+  ansible.builtin.systemd:
+    name: alloy
+    state: restarted
