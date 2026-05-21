@@ -1,0 +1,24 @@
+http:
+  services:
+    beszel:
+      loadBalancer:
+        servers:
+          - url: http://100.76.112.49:8090
+  
+  routers:
+    beszel-webhook:
+      entryPoints:
+        - https-ep
+      rule: "Host(`beszel.unco.games`) && PathPrefix(`/api`)"
+      service: beszel
+      middlewares:
+        - securityHeaders
+
+    beszel-private:
+      entryPoints:
+        - https-ep
+      rule: "Host(`beszel.unco.games`)"
+      service: beszel
+      middlewares:
+        - securityHeaders
+        - privateAccess

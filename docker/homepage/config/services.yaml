@@ -53,11 +53,17 @@
         siteMonitor: https://dockhand.unco.games/
         description: Modern Docker Management Application
 
-    # - Beszel:
-    #     icon: https://beszel.dev/icon.svg
-    #     href: https://beszel.unco.games/
-    #     siteMonitor: https://beszel.unco.games/
-    #     description: Simple, lightweight server monitoring
+    - Beszel:
+        icon: https://beszel.dev/icon.svg
+        href: https://beszel.unco.games/
+        siteMonitor: https://beszel.unco.games/
+        description: Simple, lightweight server monitoring
+
+    - Grafana:
+        icon: https://grafana.unco.games/public/build/img/fav32.png
+        href: https://grafana.unco.games/
+        siteMonitor: https://grafana.unco.games/
+        description: Full-stack observability for the agentic era
 
 - External:
     - Cloudflare:
