@@ -16,10 +16,10 @@ http:
 
 tcp:
   services:
-      forgejo-ssh:
-        loadBalancer:
-          servers:
-            - address: "100.76.112.49:2201"
+    forgejo-ssh:
+      loadBalancer:
+        servers:
+          - address: 100.76.112.49:2201
   routers:
     forgejo-ssh:
       entryPoints:
