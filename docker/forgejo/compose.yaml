@@ -11,13 +11,20 @@ services:
       FORGEJO____APP_NAME: "Unco Games"
       FORGEJO__SERVER__ROOT_URL: "https://forgejo.unco.games/"
 
-      FORGEJO__service__DISABLE_REGISTRATION: false
-      FORGEJO__service__ENABLE_INTERNAL_SIGNIN: true
+      FORGEJO__oauth2_client__ACCOUNT_LINKING: "auto"
+      FORGEJO__oauth2_client__ENABLE_AUTO_REGISTRATION: true
+      FORGEJO__oauth2_client__OPENID_CONNECT_SCOPES: "email profile groups"
+      FORGEJO__oauth2_client__REGISTER_EMAIL_CONFIRM: false
+      FORGEJO__oauth2_client__USERNAME: "nickname"
 
       FORGEJO__openid__ENABLE_OPENID_SIGNIN: false
       FORGEJO__openid__ENABLE_OPENID_SIGNUP: false
 
-      FORGEJO__oauth2_client__ENABLE_AUTO_REGISTRATION: true
+      FORGEJO__service__ALLOW_ONLY_EXTERNAL_REGISTRATION: true
+      FORGEJO__service__DISABLE_REGISTRATION: true
+      FORGEJO__service__ENABLE_INTERNAL_SIGNIN: true
+      FORGEJO__service__SHOW_REGISTRATION_BUTTON: false
+      
 
     volumes:
       - data:/data
