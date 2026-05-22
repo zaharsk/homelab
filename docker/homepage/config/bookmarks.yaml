@@ -3,9 +3,15 @@
 # https://gethomepage.dev/configs/bookmarks
 
 - Developer:
+  - Codeberg:
+    - icon: https://codeberg.org/assets/img/favicon.svg
+      href: https://codeberg.org/zaharsk
+      description: A non-profit community-led organization that aims to help free and open source projects prosper by giving them a safe and friendly home
+
   - Github:
     - icon: https://github.githubassets.com/favicons/favicon-dark.png
       href: https://github.com/
+      description: A cloud-based platform where developers store, share, and collaborate on software code
 
   - Domain name search:
     - icon: https://instantdomainsearch.com/favicon.png
