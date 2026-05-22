@@ -46,7 +46,14 @@ output "users" {
   sensitive = true
 
   value = {
-    for username, password in random_password.passwords :
-    username => password.result
+    for username, user in var.users :
+    username => {
+      password = random_password.passwords[username].result
+      groups = [
+        for group_name, group in var.groups :
+        group_name
+        if contains(group.members, username)
+      ]
+    }
   }
 }
