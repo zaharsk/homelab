@@ -13,3 +13,7 @@
         agent_public_key: "{{ install_beszel_agent_public_key }}"
         agent_token: "{{ install_beszel_agent_token }}"
         agent_hub_url: "http://100.76.112.49:8090"
+        ## Documentation says: this is REALLY BAD idea
+        ## https://galaxy.ansible.com/ui/repo/published/community/beszel/content/role/agent/
+        agent_user_groups:
+          - docker
