@@ -15,7 +15,7 @@ services:
       FORGEJO__oauth2_client__OPENID_CONNECT_SCOPES: "email profile groups"
       FORGEJO__oauth2_client__ENABLE_AUTO_REGISTRATION: true
       FORGEJO__oauth2_client__USERNAME: "nickname"
-      FORGEJO__oauth2_client__ACCOUNT_LINKING: "auto"
+      FORGEJO__oauth2_client__ACCOUNT_LINKING: "disabled"
 
       FORGEJO__openid__ENABLE_OPENID_SIGNIN: false
       FORGEJO__openid__ENABLE_OPENID_SIGNUP: false
