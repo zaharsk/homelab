@@ -10,6 +10,7 @@ resource "vault_identity_oidc_scope" "profile" {
 }
 EOT
 }
+# Standart claims for profile: https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims
 
 resource "vault_identity_oidc_scope" "email" {
   name     = "email"
