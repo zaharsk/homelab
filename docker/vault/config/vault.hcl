@@ -1,3 +1,7 @@
+ui = "true"
+log_level = "INFO"
+disable_mlock = "true"
+
 storage "raft" {
   path    = "/vault/file"
   node_id = "raft_master"
@@ -9,6 +13,7 @@ listener "tcp" {
   tls_disable = "true"
 }
 
-ui = "true"
-log_level = "INFO"
-disable_mlock = "true"
+telemetry {
+  disable_hostname = true
+  prometheus_retention_time = "12h"
+}
