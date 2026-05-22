@@ -5,8 +5,8 @@ services:
     restart: unless-stopped
     environment:
       APP_URL: "https://beszel.unco.games"
+      DISABLE_PASSWORD_AUTH: true
       USER_CREATION: true
-      LOG_LEVEL: "debug"
     ports:
       - 8090:8090
 
