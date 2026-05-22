@@ -17,7 +17,7 @@ resource "vault_identity_oidc_client" "dockhand" {
   ]
 }
 
-output "dockhand" {
+output "oidc_dockhand" {
   value = {
     client_id     = vault_identity_oidc_client.dockhand.client_id
     client_secret = vault_identity_oidc_client.dockhand.client_secret

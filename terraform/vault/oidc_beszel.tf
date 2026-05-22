@@ -17,7 +17,7 @@ resource "vault_identity_oidc_client" "beszel" {
   ]
 }
 
-output "beszel" {
+output "oidc_beszel" {
   value = {
     client_id     = vault_identity_oidc_client.beszel.client_id
     client_secret = vault_identity_oidc_client.beszel.client_secret

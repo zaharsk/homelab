@@ -17,7 +17,7 @@ resource "vault_identity_oidc_client" "grafana" {
   ]
 }
 
-output "grafana" {
+output "oidc_grafana" {
   value = {
     client_id     = vault_identity_oidc_client.grafana.client_id
     client_secret = vault_identity_oidc_client.grafana.client_secret
