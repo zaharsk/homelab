@@ -59,6 +59,12 @@
         siteMonitor: https://beszel.unco.games/
         description: Simple, lightweight server monitoring
 
+    - Technitium:
+        icon: https://technitium.com/img/logo25x25.png
+        href: https://technitium.unco.games/
+        siteMonitor: https://technitium.unco.games/
+        description: An Open Source DNS Server For Privacy & Security
+
     - Grafana:
         icon: https://grafana.unco.games/public/build/img/fav32.png
         href: https://grafana.unco.games/
