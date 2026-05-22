@@ -1,0 +1,22 @@
+services:
+  server:
+    image: codeberg.org/forgejo/forgejo:15
+    container_name: forgejo
+    restart: unless-stopped
+
+    security_opt:
+      - no-new-privileges:true
+
+    environment:
+      FORGEJO____APP_NAME: "Unco Games"
+
+    volumes:
+      - data:/data
+      - /etc/localtime:/etc/localtime:ro
+
+    ports:
+      - '3000:3000'
+      - '2201:22'
+
+volumes:
+  data: {}
