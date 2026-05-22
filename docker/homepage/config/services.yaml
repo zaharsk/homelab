@@ -38,14 +38,14 @@
     #         key: a922437859224afe8f4380a8b4e8ea96271b1234
 
 - Infrastructure:
-    # - Traefik:
-    #     icon: https://traefik.io/favicon.svg
-    #     href: https://traefik.unco.games/
-    #     siteMonitor: https://traefik.unco.games/
-    #     description: The Cloud Native Application Proxy
-    #     widget:
-    #         type: traefik
-    #         url: https://traefik.unco.games/
+    - Traefik:
+        icon: https://traefik.io/favicon.svg
+        href: https://traefik.unco.games/
+        siteMonitor: https://traefik.unco.games/
+        description: The Cloud Native Application Proxy
+        widget:
+            type: traefik
+            url: https://traefik.unco.games/
 
     - Dockhand:
         icon: https://dockhand.unco.games/favicon-32x32.png
