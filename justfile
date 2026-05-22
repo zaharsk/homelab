@@ -1,17 +1,5 @@
 # https://just.systems
 
-infra-tf-init:
-    terraform -chdir=${WORKSPACE_FOLDER}/terraform/infra init \
-        -upgrade \
-        -reconfigure \
-        -backend-config="${WORKSPACE_FOLDER}/${SECRETS_FOLDER}/tfbackend.cf-r2.hcl"
-
-vault-tf-init:
-    terraform -chdir=${WORKSPACE_FOLDER}/terraform/vault init \
-        -upgrade \
-        -reconfigure \
-        -backend-config="${WORKSPACE_FOLDER}/${SECRETS_FOLDER}/tfbackend.cf-r2.hcl"
-
 encrypt file_path:
     file_name=$(basename "{{ file_path }}") && \
     sops encrypt \
