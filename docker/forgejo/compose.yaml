@@ -25,6 +25,7 @@ services:
       FORGEJO__service__ENABLE_INTERNAL_SIGNIN: true
       FORGEJO__service__SHOW_REGISTRATION_BUTTON: false
       
+      FORGEJO__log__LEVEL: "debug"
 
     volumes:
       - data:/data
