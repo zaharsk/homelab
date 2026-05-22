@@ -35,6 +35,8 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.dashboard.rule=Host(`traefik.unco.games`)
+      - traefik.http.routers.dashboard.entrypoints=https-ep
+      - traefik.http.routers.dashboard.tls=true
       - traefik.http.routers.dashboard.service=api@internal
       - traefik.http.routers.dashboard.middlewares=privateAccess@file
 

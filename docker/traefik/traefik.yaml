@@ -12,6 +12,9 @@ providers:
   file:
     directory: "/etc/traefik/dynamic"
 
+  docker:
+    exposedByDefault: false
+
 certificatesResolvers:
   cloudflare_lego:
     acme:
