@@ -52,6 +52,13 @@ services:
     sysctls:
       - net.ipv4.ip_local_port_range=1024 65535 #remove when using "host" network mode
 
+    healthcheck:
+      test: [ "CMD-SHELL", "dig +short +retry=0 +norecurse @127.0.0.1 cloudflare.com || exit 1" ]
+      start_period: 30s
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
 volumes:
     config:
     logs:
