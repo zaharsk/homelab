@@ -9,6 +9,7 @@ services:
 
     environment:
       FORGEJO____APP_NAME: "Unco Games"
+      FORGEJO__SERVER__ROOT_URL: "https://forgejo.unco.games/"
 
     volumes:
       - data:/data
