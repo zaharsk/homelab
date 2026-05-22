@@ -13,3 +13,18 @@ http:
       service: forgejo
       middlewares:
         - securityHeaders
+
+tcp:
+  services:
+      forgejo-ssh:
+        loadBalancer:
+          servers:
+            - address: "100.76.112.49:2201"
+  routers:
+    forgejo-ssh:
+      entryPoints:
+        - ssh-forgejo-ep
+      rule: "HostSNI(`*`)"
+      service: forgejo-ssh
+
+  

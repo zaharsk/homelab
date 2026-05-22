@@ -9,7 +9,10 @@ services:
 
     environment:
       FORGEJO____APP_NAME: "Unco Games"
-      FORGEJO__SERVER__ROOT_URL: "https://forgejo.unco.games/"
+
+      FORGEJO__server__ROOT_URL: "https://forgejo.unco.games/"
+      FORGEJO__server__START_SSH_SERVER: true
+      FORGEJO__server__SSH_PORT: 2201
 
       FORGEJO__oauth2_client__ACCOUNT_LINKING: "auto"
       FORGEJO__oauth2_client__ENABLE_AUTO_REGISTRATION: true
@@ -22,7 +25,7 @@ services:
 
       FORGEJO__service__ALLOW_ONLY_EXTERNAL_REGISTRATION: true
       FORGEJO__service__DISABLE_REGISTRATION: true
-      FORGEJO__service__ENABLE_INTERNAL_SIGNIN: true
+      FORGEJO__service__ENABLE_INTERNAL_SIGNIN: false
       FORGEJO__service__SHOW_REGISTRATION_BUTTON: false
       
       FORGEJO__log__LEVEL: "debug"
@@ -33,7 +36,7 @@ services:
 
     ports:
       - '3001:3000'
-      - '2201:22'
+      - '2201:2201'
 
 volumes:
   data: {}

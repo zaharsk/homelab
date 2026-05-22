@@ -36,6 +36,17 @@ locals {
         }
       ]
     }
+
+    ssh-forgejo = {
+      ingress = [
+        {
+          protocol    = "6"
+          source_type = "CIDR_BLOCK"
+          source      = "0.0.0.0/0"
+          port        = 2201
+        }
+      ]
+    }
   }
 
   ingress_rules = flatten([

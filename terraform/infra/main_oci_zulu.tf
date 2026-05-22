@@ -74,7 +74,8 @@ module "oci_zulu_compute" {
       memory_in_gbs = 2
       enabled_nsg = [
         "ssh",
-        "web"
+        "web",
+        "ssh-forgejo"
       ]
       groups = [
         "cloud",
