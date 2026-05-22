@@ -17,8 +17,8 @@ services:
       - 80:80
       - 443:443
       - 127.0.0.1:8080:8080 # Traefik Dashboard and healthcheck
+      - 2201:2201/tcp # Forgejo ssh 
       # - 25565:25565/tcp # Minecraft
-      # - 222:222/tcp
 
     environment:
       - TZ=Europe/Belgrade
