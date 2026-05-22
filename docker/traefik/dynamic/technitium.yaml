@@ -1,0 +1,16 @@
+http:
+  services:
+    technitium:
+      loadBalancer:
+        servers:
+          - url: http://100.76.122.97:5380
+  
+  routers:
+    technitium-private:
+      entryPoints:
+        - https-ep
+      rule: "Host(`technitium.unco.games`)"
+      service: technitium
+      middlewares:
+        - securityHeaders
+        - privateAccess
