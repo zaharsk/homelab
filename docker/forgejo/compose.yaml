@@ -10,15 +10,14 @@ services:
     environment:
       FORGEJO____APP_NAME: "Unco Games"
       FORGEJO__SERVER__ROOT_URL: "https://forgejo.unco.games/"
-      
-      FORGEJO__service__DISABLE_REGISTRATION: true
-      FORGEJO__service__ENABLE_INTERNAL_SIGNIN: false
+
+      FORGEJO__service__DISABLE_REGISTRATION: false
+      FORGEJO__service__ENABLE_INTERNAL_SIGNIN: true
 
       FORGEJO__openid__ENABLE_OPENID_SIGNIN: false
       FORGEJO__openid__ENABLE_OPENID_SIGNUP: false
 
       FORGEJO__oauth2_client__ENABLE_AUTO_REGISTRATION: true
-      FORGEJO__oauth2_client__ACCOUNT_LINKING: auto
 
     volumes:
       - data:/data
