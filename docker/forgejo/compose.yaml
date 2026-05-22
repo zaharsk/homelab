@@ -10,11 +10,11 @@ services:
     environment:
       FORGEJO____APP_NAME: "Unco Games"
 
-      FORGEJO__server__DOMAIN: "forgejo.unco.games"
       FORGEJO__server__ROOT_URL: "https://forgejo.unco.games/"
       FORGEJO__server__START_SSH_SERVER: true
-      FORGEJO__server__SSH_LISTEN_PORT: 2201
+      FORGEJO__server__SSH_DOMAIN: "forgejo.unco.games"
       FORGEJO__server__SSH_PORT: 2201
+      FORGEJO__server__SSH_LISTEN_PORT: 2201
 
       FORGEJO__oauth2_client__ACCOUNT_LINKING: "auto"
       FORGEJO__oauth2_client__ENABLE_AUTO_REGISTRATION: true
