@@ -1,0 +1,15 @@
+http:
+  services:
+    forgejo:
+      loadBalancer:
+        servers:
+          - url: http://100.76.112.49:3001
+  
+  routers:
+    forgejo:
+      entryPoints:
+        - https-ep
+      rule: "Host(`forgejo.unco.games`)"
+      service: forgejo
+      middlewares:
+        - securityHeaders
