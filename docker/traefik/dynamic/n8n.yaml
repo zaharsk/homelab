@@ -1,16 +1,16 @@
 http:
   services:
-    forgejo:
+    n8n:
       loadBalancer:
         servers:
-          - url: http://100.76.112.49:3001
+          - url: http://100.76.87.226:5678
   
   routers:
-    forgejo:
+    n8n:
       entryPoints:
         - https-ep
-      rule: "Host(`forgejo.unco.games`)"
-      service: forgejo
+      rule: "Host(`n8n.unco.games`)"
+      service: n8n
       middlewares:
         - securityHeaders
         - privateAccess
