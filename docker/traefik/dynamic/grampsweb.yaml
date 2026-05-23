@@ -1,16 +1,15 @@
 http:
   services:
-    grafana:
+    grampsweb:
       loadBalancer:
         servers:
           - url: http://100.76.228.137:5000
   
   routers:
-    grafana-private:
+    grampsweb:
       entryPoints:
         - https-ep
       rule: Host(`tree.{{ env "DOMAIN_1" }}`)
-      service: grafana
+      service: grampsweb
       middlewares:
         - securityHeaders
-        - privateAccess
