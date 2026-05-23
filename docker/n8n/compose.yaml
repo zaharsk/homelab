@@ -3,7 +3,7 @@
 services:
   n8n:
     image: docker.n8n.io/n8nio/n8n
-    container_name: traefik
+    container_name: n8n
     restart: unless-stopped
 
     security_opt:
@@ -17,7 +17,7 @@ services:
       - N8N_PORT=5678
       - N8N_PROTOCOL=https
       - NODE_ENV=production
-      - WEBHOOK_URL=https://n8n.${SUBDOMAIN}.${DOMAIN_NAME}/
+      - WEBHOOK_URL=https://${SUBDOMAIN}.${DOMAIN_NAME}/
       - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
       - EXTERNAL_HOOK_FILES=/home/node/.n8n/hooks.js
       # Trust proxy for rate limiting (fixes X-Forwarded-For header issue)
