@@ -9,7 +9,7 @@ http:
     vault:
       entryPoints:
         - https-ep
-      rule: "Host(`vault.unco.games`)"
+      rule: "Host(`vault.{{ env \"DOMAIN_1\" }}`)"
       service: vault
       middlewares:
         - securityHeaders

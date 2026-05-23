@@ -9,7 +9,7 @@ http:
     grafana-private:
       entryPoints:
         - https-ep
-      rule: "Host(`grafana.unco.games`)"
+      rule: "Host(`grafana.{{ env \"DOMAIN_1\" }}`)"
       service: grafana
       middlewares:
         - securityHeaders

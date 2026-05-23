@@ -9,7 +9,7 @@ http:
     dockhand-webhook:
       entryPoints:
         - https-ep
-      rule: "Host(`dockhand.unco.games`) && PathPrefix(`/api/git/stacks`)"
+      rule: "Host(`dockhand.{{ env \"DOMAIN_1\" }}`) && PathPrefix(`/api/git/stacks`)"
       service: dockhand
       middlewares:
         - securityHeaders
@@ -17,7 +17,7 @@ http:
     dockhand-private:
       entryPoints:
         - https-ep
-      rule: "Host(`dockhand.unco.games`)"
+      rule: "Host(`dockhand.{{ env \"DOMAIN_1\" }}`)"
       service: dockhand
       middlewares:
         - securityHeaders

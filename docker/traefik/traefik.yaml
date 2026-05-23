@@ -71,9 +71,12 @@ entryPoints:
       tls:
         certResolver: cloudflare_lego
         domains:
-          - main: "unco.games"
+          - main: '{{ env "DOMAIN_1" }}'
             sans:
-              - "*.unco.games"
+              - '*.{{ env "DOMAIN_1" }}'
+          - main: '{{ env "DOMAIN_2" }}'
+            sans:
+              - '*.{{ env "DOMAIN_2" }}'
     transport:
       respondingTimeouts:
         readTimeout: 10m

@@ -7,12 +7,6 @@ services:
     security_opt:
       - no-new-privileges:true
 
-    # networks:
-    #   proxy:
-    #     aliases:
-    #       - 'auth.unco.games'
-    #   authelia: {}
-
     ports:
       - 80:80
       - 443:443
@@ -34,7 +28,7 @@ services:
 
     labels:
       - traefik.enable=true
-      - traefik.http.routers.dashboard.rule=Host(`traefik.unco.games`)
+      - traefik.http.routers.dashboard.rule=Host(`traefik.${DOMAIN_1}`)
       - traefik.http.routers.dashboard.entrypoints=https-ep
       - traefik.http.routers.dashboard.tls=true
       - traefik.http.routers.dashboard.service=api@internal
@@ -46,7 +40,3 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-
-# networks:
-#   proxy:
-#     external: true
