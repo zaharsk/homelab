@@ -68,60 +68,20 @@ module "oci_delta_compute" {
   ssh_public_key_path = var.ssh_public_key_path
 
   instances = {
-    # hotel = {
-    #   shape         = "VM.Standard.E2.1.Micro"
-    #   ocpus         = 1
-    #   memory_in_gbs = 1
-    #   enabled_nsg   = ["ssh", "web"]
-    #   groups = [
-    #     "cloud",
-    #     "oci",
-    #     "ubuntu",
-    #     "x86",
-    #     "node"
-    #   ]
-    # },
-
-    # india = {
-    #   shape         = "VM.Standard.E2.1.Micro"
-    #   ocpus         = 1
-    #   memory_in_gbs = 1
-    #   enabled_nsg   = ["ssh"]
-    #   groups = [
-    #     "cloud",
-    #     "oci",
-    #     "ubuntu",
-    #     "x86",
-    #     "node"
-    #   ]
-    # },
-
-    # juliett = {
-    #   shape         = "VM.Standard.A1.Flex"
-    #   ocpus         = 2
-    #   memory_in_gbs = 12
-    #   enabled_nsg   = ["ssh"]
-    #   groups = [
-    #     "cloud",
-    #     "oci",
-    #     "ubuntu",
-    #     "arm",
-    #     "node"
-    #   ]
-    # },
-
-    # kilo = {
-    #   shape         = "VM.Standard.A1.Flex"
-    #   ocpus         = 2
-    #   memory_in_gbs = 12
-    #   enabled_nsg   = ["ssh"]
-    #   groups = [
-    #     "cloud",
-    #     "oci",
-    #     "ubuntu",
-    #     "arm",
-    #     "node"
-    #   ]
-    # }
+    charlie = {
+      shape         = "VM.Standard.A1.Flex"
+      ocpus         = 1
+      memory_in_gbs = 2
+      enabled_nsg = [
+        "ssh",
+      ]
+      groups = [
+        "cloud",
+        "oci",
+        "ubuntu",
+        "arm",
+        "worker"
+      ]
+    }
   }
 }
