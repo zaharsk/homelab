@@ -18,7 +18,7 @@ http:
     forgejo:
       entryPoints:
         - https-ep
-      rule: "Host(`forgejo.{{ env \"DOMAIN_1\" }}`)"
+      rule: 'Host(`forgejo.{{ env "DOMAIN_1" }}`)'
       service: forgejo
       middlewares:
         - securityHeaders
