@@ -17,6 +17,8 @@ services:
     environment:
       - TZ=Europe/Belgrade
       - CF_DNS_API_TOKEN=${CF_DNS_API_TOKEN}
+      - DOMAIN_1=${DOMAIN_1}
+      - DOMAIN_2=${DOMAIN_2}
       
     volumes:
       - /etc/localtime:/etc/localtime:ro
