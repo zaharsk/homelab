@@ -9,7 +9,7 @@ http:
     dockhand-webhook:
       entryPoints:
         - https-ep
-      rule: 'Host(`dockhand.{{ env "DOMAIN_1" }}`) && PathPrefix(`/api/git/stacks`)'
+      rule: Host(`dockhand.{{ env "DOMAIN_0" }}`) && PathPrefix(`/api/git/stacks`)
       service: dockhand
       middlewares:
         - securityHeaders
@@ -17,7 +17,7 @@ http:
     dockhand-private:
       entryPoints:
         - https-ep
-      rule: 'Host(`dockhand.{{ env "DOMAIN_1" }}`)'
+      rule: Host(`dockhand.{{ env "DOMAIN_0" }}`)
       service: dockhand
       middlewares:
         - securityHeaders

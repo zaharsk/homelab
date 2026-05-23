@@ -8,5 +8,5 @@ tcp:
     forgejo-ssh:
       entryPoints:
         - ssh-forgejo-ep
-      rule: 'HostSNI(`*`)'
+      rule: HostSNI(`*`)
       service: forgejo-ssh

@@ -9,7 +9,7 @@ http:
     homepage-private:
       entryPoints:
         - https-ep
-      rule: 'Host(`homepage.{{ env "DOMAIN_1" }}`)'
+      rule: Host(`homepage.{{ env "DOMAIN_0" }}`)
       service: homepage
       middlewares:
         - securityHeaders

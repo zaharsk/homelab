@@ -9,7 +9,7 @@ http:
     technitium-private:
       entryPoints:
         - https-ep
-      rule: 'Host(`technitium.{{ env "DOMAIN_1" }}`)'
+      rule: Host(`technitium.{{ env "DOMAIN_0" }}`)
       service: technitium
       middlewares:
         - securityHeaders

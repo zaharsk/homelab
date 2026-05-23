@@ -70,14 +70,6 @@ entryPoints:
     http:
       tls:
         certResolver: cloudflare_lego
-        domains:
-        - main: "${DOMAIN_1}"
-          sans:
-            - "*.${DOMAIN_1}"
-
-        - main: "${DOMAIN_2}"
-          sans:
-            - "*.${DOMAIN_2}"
     transport:
       respondingTimeouts:
         readTimeout: 10m

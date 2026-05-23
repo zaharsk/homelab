@@ -9,7 +9,7 @@ http:
     beszel-webhook:
       entryPoints:
         - https-ep
-      rule: 'Host(`beszel.{{ env "DOMAIN_1" }}`) && PathPrefix(`/api`)'
+      rule: Host(`beszel.{{ env "DOMAIN_0" }}`) && PathPrefix(`/api`)
       service: beszel
       middlewares:
         - securityHeaders
@@ -17,7 +17,7 @@ http:
     beszel-private:
       entryPoints:
         - https-ep
-      rule: 'Host(`beszel.{{ env "DOMAIN_1" }}`)'
+      rule: Host(`beszel.{{ env "DOMAIN_0" }}`)
       service: beszel
       middlewares:
         - securityHeaders
