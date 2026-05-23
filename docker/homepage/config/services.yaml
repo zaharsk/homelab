@@ -68,6 +68,7 @@
             type: technitium
             url: https://technitium.unco.games
             key: {{HOMEPAGE_VAR_TECHNITIUM_KEY}}
+            fields: ["totalQueries", "totalAuthoritative", "totalBlocked", "totalServerFailure"]
 
     - Grafana:
         icon: https://grafana.unco.games/public/build/img/fav32.png
