@@ -12,7 +12,8 @@ resource "vault_identity_oidc_provider" "default" {
     vault_identity_oidc_client.grafana.client_id,
     vault_identity_oidc_client.beszel.client_id,
     vault_identity_oidc_client.technitium.client_id,
-    vault_identity_oidc_client.forgejo.client_id
+    vault_identity_oidc_client.forgejo.client_id,
+    vault_identity_oidc_client.n8n.client_id
   ]
 
   scopes_supported = [
