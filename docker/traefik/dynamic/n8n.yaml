@@ -6,7 +6,7 @@ http:
           - url: http://100.76.87.226:5678
   
   routers:
-    n8n:
+    n8n-private:
       entryPoints:
         - https-ep
       rule: "Host(`n8n.unco.games`)"
@@ -14,4 +14,12 @@ http:
       middlewares:
         - securityHeaders
         - privateAccess
+
+    n8n-webhook:
+      entryPoints:
+        - https-ep
+      rule: "Host(`n8n.unco.games`) && (PathPrefix(`/webhook`) || PathPrefix(`/webhook-test`))"
+      service: n8n
+      middlewares:
+        - securityHeaders
   
