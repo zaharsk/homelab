@@ -8,6 +8,22 @@
         href: https://vault.unco.games/
         siteMonitor: https://vault.unco.games/
         description: Identity-based secrets management
+    
+    - Forgejo:
+        icon: https://forgejo.org/favicon.ico
+        href: https://forgejo.unco.games/
+        siteMonitor: https://forgejo.unco.games/
+        description: Beyond coding. We forge.
+        widget:
+            type: gitea
+            url: https://forgejo.unco.games
+            key: {{HOMEPAGE_VAR_FORGEJO_KEY}}
+
+    - n8n:
+        icon: https://n8n.io/favicon.ico
+        href: https://n8n.unco.games/
+        siteMonitor: https://n8n.unco.games/
+        description: AI Workflow Automation Platform & Tools
 
     # - Vaultwarden:
     #     icon: https://vaultwarden.unco.games/images/favicon-32x32.png
@@ -20,22 +36,6 @@
         href: https://tree.valan.rs/
         siteMonitor: https://tree.valan.rs/
         description: The free, open-source genealogy system for building your family tree
-    
-    # - n8n:
-    #     icon: https://n8n.io/favicon.ico
-    #     href: https://n8n.unco.games/
-    #     siteMonitor: https://n8n.unco.games/
-    #     description: AI Workflow Automation Platform & Tools
-    
-    # - Forgejo:
-    #     icon: https://forgejo.org/favicon.ico
-    #     href: https://forgejo.unco.games/
-    #     siteMonitor: https://forgejo.unco.games/
-    #     description: Beyond coding. We forge.
-    #     widget:
-    #         type: gitea
-    #         url: https://forgejo.unco.games
-    #         key: a922437859224afe8f4380a8b4e8ea96271b1234
 
 - Infrastructure:
     - Traefik:
@@ -64,6 +64,10 @@
         href: https://technitium.unco.games/
         siteMonitor: https://technitium.unco.games/
         description: An Open Source DNS Server For Privacy & Security
+        widget:
+            type: technitium
+            url: https://technitium.unco.games
+            key: {{HOMEPAGE_VAR_TECHNITIUM_KEY}}
 
     - Grafana:
         icon: https://grafana.unco.games/public/build/img/fav32.png
