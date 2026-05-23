@@ -71,7 +71,7 @@ module "oci_delta_compute" {
     charlie = {
       shape         = "VM.Standard.A1.Flex"
       ocpus         = 1
-      memory_in_gbs = 3
+      memory_in_gbs = 4
       enabled_nsg = [
         "ssh",
       ]
