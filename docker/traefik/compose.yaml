@@ -3,8 +3,6 @@ services:
   traefik:
     image: traefik:latest
 
-    container_name: traefik
-
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -37,6 +35,7 @@ services:
 
     labels:
       - traefik.enable=true
+
       - traefik.http.routers.dashboard.rule=Host(`traefik.${DOMAIN_0}`)
       - traefik.http.routers.dashboard.entrypoints=https-ep
       - traefik.http.routers.dashboard.tls=true
