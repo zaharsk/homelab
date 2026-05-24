@@ -1,25 +1,10 @@
+name: traefik
 services:
   traefik:
     image: traefik:latest
+    
     container_name: traefik
-    restart: unless-stopped
 
-    security_opt:
-      - no-new-privileges:true
-
-    ports:
-      - 80:80
-      - 443:443
-      - 127.0.0.1:8080:8080 # Traefik Dashboard and healthcheck
-      - 2201:2201/tcp # Forgejo ssh 
-      - 25565:25565/tcp # Minecraft
-
-    environment:
-      - TZ=Europe/Belgrade
-      - CF_DNS_API_TOKEN=${CF_DNS_API_TOKEN}
-      - DOMAIN_0=${DOMAIN_0}
-      - DOMAIN_1=${DOMAIN_1}
-      
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -27,6 +12,28 @@ services:
       - ./dynamic:/etc/traefik/dynamic:ro
       - ./certs:/etc/traefik/certs:rw
       - ./logs:/logs:rw
+
+    environment:
+      - TZ=Europe/Belgrade
+      - CF_DNS_API_TOKEN=${CF_DNS_API_TOKEN}
+      - DOMAIN_0=${DOMAIN_0}
+      - DOMAIN_1=${DOMAIN_1}
+
+    ports:
+      - '127.0.0.1:80:80'
+      - '127.0.0.1:443:443'
+      - '127.0.0.1:2201:2201/tcp' # Forgejo ssh 
+      - '127.0.0.1:8080:8080' # Traefik Dashboard and healthcheck
+      - '127.0.0.1:25565:25565/tcp' # Minecraft
+
+    restart: unless-stopped
+
+    healthcheck:
+      test: [ "CMD", "wget", "--spider", "-q", "http://localhost:8080/ping" ]
+      start_period: 30s
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
     labels:
       - traefik.enable=true
@@ -41,9 +48,5 @@ services:
       - traefik.entryPoints.https-ep.http.tls.domains[1].main=${DOMAIN_1}
       - traefik.entryPoints.https-ep.http.tls.domains[1].sans=*.${DOMAIN_1}
 
-    healthcheck:
-      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8080/ping"]
-      start_period: 30s
-      interval: 10s
-      timeout: 5s
-      retries: 5
+    security_opt:
+      - no-new-privileges:true
