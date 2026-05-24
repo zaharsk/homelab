@@ -80,3 +80,6 @@ entryPoints:
 
   ssh-forgejo-ep:
     address: ":2201"
+
+  minecraft-ep:
+    address: ":25565"
