@@ -37,8 +37,8 @@ services:
       timeout: 5s
       retries: 5
 
-    # cap_drop:
-    #   - ALL
+    cap_drop:
+      - ALL
 
     security_opt:
       - no-new-privileges:true
@@ -72,8 +72,8 @@ services:
       timeout: 5s
       retries: 5
 
-    cap_drop:
-      - ALL
+    # cap_drop:
+    #   - ALL
 
     security_opt:
       - no-new-privileges:true
