@@ -29,3 +29,9 @@ just encrypt /dev/shm/secret.yml
 ```sh
 docker run -t --rm -v ${PWD}:/app zavoloklom/dclint . --fix
 ```
+
+### 5. Check security
+
+```sh
+docker run -t -v "${PWD}":/path checkmarx/kics scan -p /path -o "/path/"
+```
