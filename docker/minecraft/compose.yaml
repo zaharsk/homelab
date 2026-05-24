@@ -23,3 +23,9 @@ services:
       ENABLE_ROLLING_LOGS: "true"
     volumes:
       - "./data:/data"
+    
+    healthcheck:
+      test: mc-health
+      start_period: 1m
+      interval: 5s
+      retries: 20
