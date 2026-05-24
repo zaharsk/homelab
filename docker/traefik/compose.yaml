@@ -2,7 +2,7 @@ name: traefik
 services:
   traefik:
     image: traefik:latest
-    
+
     container_name: traefik
 
     volumes:
@@ -20,11 +20,11 @@ services:
       - DOMAIN_1=${DOMAIN_1}
 
     ports:
-      - '127.0.0.1:80:80'
-      - '127.0.0.1:443:443'
-      - '127.0.0.1:2201:2201/tcp' # Forgejo ssh 
-      - '127.0.0.1:8080:8080' # Traefik Dashboard and healthcheck
-      - '127.0.0.1:25565:25565/tcp' # Minecraft
+      - '80:80'
+      - '443:443'
+      - '2201:2201/tcp' # Forgejo ssh 
+      - '8080:8080' # Traefik Dashboard and healthcheck
+      - '25565:25565/tcp' # Minecraft
 
     restart: unless-stopped
 
