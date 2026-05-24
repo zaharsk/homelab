@@ -1,16 +1,14 @@
 # Community OIDC integration: https://github.com/cweagans/n8n-oidc
+name: n8n
 
 services:
   n8n:
     image: docker.n8n.io/n8nio/n8n
-    container_name: n8n
-    restart: unless-stopped
 
-    security_opt:
-      - no-new-privileges:true
-
-    ports:
-      - "5678:5678"
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - ./hooks.js:/home/node/.n8n/hooks.js
+      - ./local-files:/files
 
     environment:
       - N8N_HOST=${SUBDOMAIN}.${DOMAIN_NAME}
@@ -33,17 +31,23 @@ services:
       # Exclude /auth/* routes from frontend history API handler so our OIDC routes work
       - N8N_ADDITIONAL_NON_UI_ROUTES=auth
 
-    volumes:
-      - n8n_data:/home/node/.n8n
-      - ./hooks.js:/home/node/.n8n/hooks.js
-      - ./local-files:/files
+    ports:
+      - '0.0.0.0:5678:5678'
+
+    restart: unless-stopped
 
     healthcheck:
-      test: ["CMD", "sh", "-c", "(wget -q -T 5 -O - http://localhost:5678/healthz 2>/dev/null | grep -qF '{\"status\":\"ok\"}') || exit 1"]
+      test: [ "CMD", "sh", "-c", "(wget -q -T 5 -O - http://localhost:5678/healthz 2>/dev/null | grep -qF '{\"status\":\"ok\"}') || exit 1" ]
       start_period: 30s
       interval: 10s
       timeout: 5s
       retries: 5
+
+    cap_drop:
+      - ALL
+
+    security_opt:
+      - no-new-privileges:true
 
 volumes:
   n8n_data:
