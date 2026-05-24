@@ -38,11 +38,11 @@ services:
 
     restart: unless-stopped
 
-    cap_drop:
-      - ALL
+    # cap_drop:
+    #   - ALL
 
     security_opt:
-      - no-new-privileges:false
+      - no-new-privileges:true
 
 volumes:
   data: {}
