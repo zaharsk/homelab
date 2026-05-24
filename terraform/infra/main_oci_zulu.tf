@@ -87,8 +87,8 @@ module "oci_zulu_compute" {
     },
     bravo = {
       shape         = "VM.Standard.A1.Flex"
-      ocpus         = 1
-      memory_in_gbs = 2
+      ocpus         = 2
+      memory_in_gbs = 8
       enabled_nsg = [
         "ssh",
       ]
