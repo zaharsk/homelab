@@ -31,12 +31,12 @@ services:
       interval: 5s
       retries: 20
 
-    cap_drop:
-      - ALL
+    # cap_drop:
+    #   - ALL
 
     security_opt:
       - no-new-privileges:true
 
     stdin_open: true
-    
+
     tty: true
