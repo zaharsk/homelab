@@ -15,7 +15,7 @@ services:
       
     environment:
       # required, may need port. See gethomepage.dev/installation/#homepage_allowed_hosts
-      HOMEPAGE_ALLOWED_HOSTS: homepage.unco.games
+      HOMEPAGE_ALLOWED_HOSTS: homepage.${HOMEPAGE_VAR_DOMAIN_0}
       HOMEPAGE_VAR_FORGEJO_KEY: ${HOMEPAGE_VAR_FORGEJO_KEY}
       HOMEPAGE_VAR_TECHNITIUM_KEY: ${HOMEPAGE_VAR_TECHNITIUM_KEY}
       HOMEPAGE_VAR_DOMAIN_0: ${HOMEPAGE_VAR_DOMAIN_0}
