@@ -3,8 +3,6 @@ services:
   server:
     image: codeberg.org/forgejo/forgejo:15
 
-    container_name: forgejo
-
     volumes:
       - data:/data
       - /etc/localtime:/etc/localtime:ro
