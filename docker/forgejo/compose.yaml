@@ -42,7 +42,7 @@ services:
       - ALL
 
     security_opt:
-      - no-new-privileges:true
+      - no-new-privileges:false
 
 volumes:
   data: {}
