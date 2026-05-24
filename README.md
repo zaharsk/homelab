@@ -10,16 +10,22 @@
 
 ### 2. Terraform init
 
-```bash
+```sh
 terraform init -upgrade -reconfigure -backend-config=s3.tfbackend.json
 ```
 
 ### 3. Create secrets
 
-```bash
+```sh
 code /dev/shm/secret.yml
 ```
 
-```bash
+```sh
 just encrypt /dev/shm/secret.yml
+```
+
+### 4. Lint compose.yaml
+
+```sh
+docker run -t --rm -v ${PWD}:/app zavoloklom/dclint . --fix
 ```
