@@ -1,43 +1,62 @@
+name: gramps
+
 services:
   grampsweb: &grampsweb
     image: ghcr.io/gramps-project/grampsweb:latest
-    container_name: grampsweb
-    restart: unless-stopped
 
-    ports:
-      - "5000:5000"  # host:docker
+    depends_on:
+      - grampsweb_redis
+
+    volumes:
+      - gramps_users:/app/users # persist user database
+      - gramps_index:/app/indexdir # persist search index
+      - gramps_thumb_cache:/app/thumbnail_cache # persist thumbnails
+      - gramps_cache:/app/cache # persist export and report caches
+      - gramps_secret:/app/secret # persist flask secret
+      - gramps_db:/root/.gramps/grampsdb # persist Gramps database
+      - gramps_media:/app/media # persist media files
+      - gramps_tmp:/tmp
+
     environment:
-      GRAMPSWEB_TREE: "Valan Tree"  # will create a new tree if not exists
-      GRAMPSWEB_BASE_URL: "https://tree.${DOMAIN_1}" 
-      GRAMPSWEB_REGISTRATION_DISABLED: true 
+      GRAMPSWEB_TREE: "Valan Tree" # will create a new tree if not exists
+      GRAMPSWEB_BASE_URL: "https://tree.${DOMAIN_1}"
+      GRAMPSWEB_REGISTRATION_DISABLED: true
       GRAMPSWEB_CELERY_CONFIG__broker_url: "redis://grampsweb_redis:6379/0"
       GRAMPSWEB_CELERY_CONFIG__result_backend: "redis://grampsweb_redis:6379/0"
       GRAMPSWEB_RATELIMIT_STORAGE_URI: redis://grampsweb_redis:6379/1
-    depends_on:
-      - grampsweb_redis
-    volumes:
-      - gramps_users:/app/users  # persist user database
-      - gramps_index:/app/indexdir  # persist search index
-      - gramps_thumb_cache:/app/thumbnail_cache  # persist thumbnails
-      - gramps_cache:/app/cache  # persist export and report caches
-      - gramps_secret:/app/secret  # persist flask secret
-      - gramps_db:/root/.gramps/grampsdb  # persist Gramps database
-      - gramps_media:/app/media  # persist media files
-      - gramps_tmp:/tmp
+
+    ports:
+      - '0.0.0.0:5000:5000'
+
+    restart: unless-stopped
+
+    cap_drop:
+      - ALL
+
+    security_opt:
+      - no-new-privileges:true
 
   grampsweb_celery:
     <<: *grampsweb  # YAML merge key copying the entire grampsweb service config
-    ports: []
-    container_name: grampsweb_celery
+
     depends_on:
       - grampsweb
       - grampsweb_redis
+
+    ports: []
+
     command: celery -A gramps_webapi.celery worker --loglevel=INFO --concurrency=2
 
   grampsweb_redis:
     image: docker.io/valkey/valkey:8-alpine
-    container_name: grampsweb_redis
+
     restart: unless-stopped
+
+    cap_drop:
+      - ALL
+
+    security_opt:
+      - no-new-privileges:true
 
 volumes:
   gramps_users:
