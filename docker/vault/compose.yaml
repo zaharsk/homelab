@@ -1,14 +1,13 @@
+name: vault
+
 services:
   vault:
     image: hashicorp/vault:latest
-    container_name: vault
-    restart: unless-stopped
 
-    security_opt:
-      - no-new-privileges:true
-
-    cap_add:
-      - IPC_LOCK
+    volumes:
+      - ./config:/vault/config
+      - logs:/vault/logs
+      - file:/vault/file
 
     environment:
       VAULT_API_ADDR: "https://vault.unco.games"
@@ -16,18 +15,15 @@ services:
       VAULT_CLUSTER_ADDR: "http://100.76.122.97:8201"
 
     ports:
-      - "8200:8200"
-      - "8201:8201"
+      - '0.0.0.0:8200:8200'
+      - '0.0.0.0:8201:8201'
 
     command:
       - vault
       - server
       - -config=/vault/config/vault.hcl
 
-    volumes:
-      - ./config:/vault/config
-      - logs:/vault/logs
-      - file:/vault/file
+    restart: unless-stopped
 
     healthcheck:
       test: [ "CMD-SHELL", "wget --no-verbose --tries=1 --spider http://127.0.0.1:8200/v1/sys/health || exit 1" ]
@@ -35,6 +31,15 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
+    cap_add:
+      - IPC_LOCK
+
+    cap_drop:
+      - ALL
+
+    security_opt:
+      - no-new-privileges:true
 
 volumes:
   logs:
