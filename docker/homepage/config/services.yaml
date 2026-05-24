@@ -4,31 +4,31 @@
 
 - Services:
     - Vault:
-        icon: https://vault.unco.games/ui/favicon-c02e22ca67f83a0fb6f2fd265074910a.png
-        href: https://vault.unco.games/
-        siteMonitor: https://vault.unco.games/
+        icon: https://vault.{{HOMEPAGE_VAR_DOMAIN_0}}/ui/favicon-c02e22ca67f83a0fb6f2fd265074910a.png
+        href: https://vault.{{HOMEPAGE_VAR_DOMAIN_0}}/
+        siteMonitor: https://vault.{{HOMEPAGE_VAR_DOMAIN_0}}/
         description: Identity-based secrets management
     
     - Forgejo:
         icon: https://forgejo.org/favicon.ico
-        href: https://forgejo.unco.games/
-        siteMonitor: https://forgejo.unco.games/
+        href: https://forgejo.{{HOMEPAGE_VAR_DOMAIN_0}}/
+        siteMonitor: https://forgejo.{{HOMEPAGE_VAR_DOMAIN_0}}/
         description: Beyond coding. We forge.
         widget:
             type: gitea
-            url: https://forgejo.unco.games
+            url: https://forgejo.{{HOMEPAGE_VAR_DOMAIN_0}}
             key: {{HOMEPAGE_VAR_FORGEJO_KEY}}
 
     - n8n:
         icon: https://n8n.io/favicon.ico
-        href: https://n8n.unco.games/
-        siteMonitor: https://n8n.unco.games/
+        href: https://n8n.{{HOMEPAGE_VAR_DOMAIN_0}}/
+        siteMonitor: https://n8n.{{HOMEPAGE_VAR_DOMAIN_0}}/
         description: AI Workflow Automation Platform & Tools
 
     # - Vaultwarden:
-    #     icon: https://vaultwarden.unco.games/images/favicon-32x32.png
-    #     href: https://vaultwarden.unco.games/
-    #     siteMonitor: https://vaultwarden.unco.games/
+    #     icon: https://vaultwarden.{{HOMEPAGE_VAR_DOMAIN_0}}/images/favicon-32x32.png
+    #     href: https://vaultwarden.{{HOMEPAGE_VAR_DOMAIN_0}}/
+    #     siteMonitor: https://vaultwarden.{{HOMEPAGE_VAR_DOMAIN_0}}/
     #     description: An alternative server implementation of the Bitwarden Client API
 
     - Gramps Web:
@@ -38,42 +38,42 @@
         description: The free, open-source genealogy system for building your family tree
 
 - Infrastructure:
-    - Traefik:
-        icon: https://traefik.io/favicon.svg
-        href: https://traefik.unco.games/
-        siteMonitor: https://traefik.unco.games/
-        description: The Cloud Native Application Proxy
-        widget:
-            type: traefik
-            url: https://traefik.unco.games/
-
     - Dockhand:
-        icon: https://dockhand.unco.games/favicon-32x32.png
-        href: https://dockhand.unco.games/
-        siteMonitor: https://dockhand.unco.games/
+        icon: https://dockhand.{{HOMEPAGE_VAR_DOMAIN_0}}/favicon-32x32.png
+        href: https://dockhand.{{HOMEPAGE_VAR_DOMAIN_0}}/
+        siteMonitor: https://dockhand.{{HOMEPAGE_VAR_DOMAIN_0}}/
         description: Modern Docker Management Application
 
     - Beszel:
         icon: https://beszel.dev/icon.svg
-        href: https://beszel.unco.games/
-        siteMonitor: https://beszel.unco.games/
+        href: https://beszel.{{HOMEPAGE_VAR_DOMAIN_0}}/
+        siteMonitor: https://beszel.{{HOMEPAGE_VAR_DOMAIN_0}}/
         description: Simple, lightweight server monitoring
 
     - Technitium:
         icon: https://technitium.com/img/logo25x25.png
-        href: https://technitium.unco.games/
-        siteMonitor: https://technitium.unco.games/
+        href: https://technitium.{{HOMEPAGE_VAR_DOMAIN_0}}/
+        siteMonitor: https://technitium.{{HOMEPAGE_VAR_DOMAIN_0}}/
         description: An Open Source DNS Server For Privacy & Security
         widget:
             type: technitium
-            url: https://technitium.unco.games
+            url: https://technitium.{{HOMEPAGE_VAR_DOMAIN_0}}
             key: {{HOMEPAGE_VAR_TECHNITIUM_KEY}}
             fields: ["totalQueries", "totalAuthoritative", "totalBlocked", "totalServerFailure"]
 
+    - Traefik:
+        icon: https://traefik.io/favicon.svg
+        href: https://traefik.{{HOMEPAGE_VAR_DOMAIN_0}}/
+        siteMonitor: https://traefik.{{HOMEPAGE_VAR_DOMAIN_0}}/
+        description: The Cloud Native Application Proxy
+        widget:
+            type: traefik
+            url: https://traefik.{{HOMEPAGE_VAR_DOMAIN_0}}/
+
     - Grafana:
-        icon: https://grafana.unco.games/public/build/img/fav32.png
-        href: https://grafana.unco.games/
-        siteMonitor: https://grafana.unco.games/
+        icon: https://grafana.{{HOMEPAGE_VAR_DOMAIN_0}}/public/build/img/fav32.png
+        href: https://grafana.{{HOMEPAGE_VAR_DOMAIN_0}}/
+        siteMonitor: https://grafana.{{HOMEPAGE_VAR_DOMAIN_0}}/
         description: Full-stack observability for the agentic era
 
 - External:
@@ -107,12 +107,17 @@
         href: https://supabase.com/dashboard
         description: The Postgres Development Platform
 
-    - Grafana:
-        icon: https://grafana.com/static/assets/img/fav32.png
-        href: https://zaharsk.grafana.net/
-        description: The open and composable observability platform
-
     - Aiven:
         icon: https://aiven.io/favicons/favicon-32x32.png
         href: https://aiven.io/
         description: Your AI-ready Open Source Data Platform
+
+    - CloudAMQP:
+        icon: https://supabase.com/dashboard
+        href: https://www.cloudamqp.com/
+        description: Queue starts here.
+
+    - Grafana:
+        icon: https://grafana.com/static/assets/img/fav32.png
+        href: https://zaharsk.grafana.net/
+        description: The open and composable observability platform
