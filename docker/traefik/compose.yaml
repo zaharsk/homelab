@@ -20,11 +20,11 @@ services:
       - DOMAIN_1=${DOMAIN_1}
 
     ports:
-      - '80:80'
-      - '443:443'
-      - '2201:2201/tcp' # Forgejo ssh 
-      - '8080:8080' # Traefik Dashboard and healthcheck
-      - '25565:25565/tcp' # Minecraft
+      - '0.0.0.0:80:80'
+      - '0.0.0.0:443:443'
+      - '0.0.0.0:2201:2201/tcp' # Forgejo ssh 
+      - '127.0.0.1:8080:8080' # Traefik Dashboard and healthcheck
+      - '0.0.0.0:25565:25565/tcp' # Minecraft
 
     restart: unless-stopped
 
@@ -47,6 +47,9 @@ services:
       - traefik.entryPoints.https-ep.http.tls.domains[0].sans=*.${DOMAIN_0}
       - traefik.entryPoints.https-ep.http.tls.domains[1].main=${DOMAIN_1}
       - traefik.entryPoints.https-ep.http.tls.domains[1].sans=*.${DOMAIN_1}
+
+    cap_drop:
+      - ALL
 
     security_opt:
       - no-new-privileges:true
