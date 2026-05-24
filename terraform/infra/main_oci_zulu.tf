@@ -75,7 +75,8 @@ module "oci_zulu_compute" {
       enabled_nsg = [
         "ssh",
         "web",
-        "ssh-forgejo"
+        "ssh-forgejo",
+        "minecraft"
       ]
       groups = [
         "cloud",
