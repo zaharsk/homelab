@@ -1,22 +1,33 @@
+name: beszel
 services:
   beszel:
     image: henrygd/beszel
+
     container_name: beszel
-    restart: unless-stopped
-    environment:
-      APP_URL: "https://beszel.unco.games"
-      DISABLE_PASSWORD_AUTH: true
-      USER_CREATION: true
-    ports:
-      - 8090:8090
 
     volumes:
       - beszel_data:/beszel_data
 
+    environment:
+      APP_URL: "https://beszel.unco.games"
+      DISABLE_PASSWORD_AUTH: true
+      USER_CREATION: true
+
+    ports:
+      - '0.0.0.0:8090:8090'
+
+    restart: unless-stopped
+
     healthcheck:
-      test: ['CMD', '/beszel', 'health', '--url', 'http://localhost:8090']
+      test: [ 'CMD', '/beszel', 'health', '--url', 'http://localhost:8090' ]
       start_period: 5s # Check 5 seconds after the container starts
       interval: 120s # Then check every 120 seconds after that
+
+    cap_drop:
+      - ALL
+
+    security_opt:
+      - no-new-privileges:true
 
 volumes:
   beszel_data:
