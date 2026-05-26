@@ -31,15 +31,15 @@
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
   "containerEnv": {
-    "GIT_USER_NAME": "Zakhar Skorokhodov",
-    "GIT_USER_EMAIL": "zaharsk@gmail.com",
+    "GIT_USER_NAME": "${localEnv:GIT_USER_NAME}",
+    "GIT_USER_EMAIL": "${localEnv:GIT_USER_EMAIL}",
     "WORKSPACE_PATH": "${containerWorkspaceFolder}",
     "SECRETS_PATH": "${containerWorkspaceFolder}/secrets",
     "SOPS_AGE_KEY_FILE": "/dev/shm/age.key",
     "ANSIBLE_CONFIG": "${containerWorkspaceFolder}/ansible.cfg"
   },
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "./scripts/post-create-command.sh",
+  "postCreateCommand": "./.devcontainer/post-create-command.sh",
   // Configure tool-specific properties.
   "customizations": {
     "vscode": {

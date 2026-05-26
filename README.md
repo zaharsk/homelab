@@ -1,7 +1,5 @@
 # Oracle Cloud based virtual Homelab
 
-## Preparation
-
 ### 1. Generate keys:
 
 ```sh
