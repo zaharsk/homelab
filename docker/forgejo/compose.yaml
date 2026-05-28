@@ -38,6 +38,13 @@ services:
 
     restart: unless-stopped
 
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/healthz"]
+      start_period: 30s
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
     # cap_drop:
     #   - ALL
 
