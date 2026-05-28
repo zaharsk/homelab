@@ -19,6 +19,7 @@ services:
 
     environment:
       GRAMPSWEB_TREE: "Valan Tree" # will create a new tree if not exists
+      GRAMPSWEB_SECRET_KEY: "${SECRET_KEY}"
       GRAMPSWEB_BASE_URL: "https://tree.${DOMAIN_1}"
       GRAMPSWEB_REGISTRATION_DISABLED: true
       GRAMPSWEB_CELERY_CONFIG__broker_url: "redis://grampsweb_redis:6379/0"
@@ -31,7 +32,7 @@ services:
     restart: unless-stopped
 
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:5000/"]
+      test: [ "CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:5000/" ]
       start_period: 30s
       interval: 10s
       timeout: 5s
