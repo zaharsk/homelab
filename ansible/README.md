@@ -3,7 +3,7 @@
 ```sh
 ansible all \
   -b \
-  -f 1 \
+  -f 2 \
   -m ansible.builtin.reboot \
   -a 'msg="Rolling reboot initiated by Ansible"'
 ```
