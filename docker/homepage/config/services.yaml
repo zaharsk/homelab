@@ -77,6 +77,7 @@
         description: Full-stack observability for the agentic era
 
     - Minecraft:
+        icon: https://www.minecraft.net/etc.clientlibs/minecraftnet/clientlibs/clientlib-site/resources/favicon-96x96.png
         widget:
             type: minecraft
             url: udp://100.76.87.226:25565
