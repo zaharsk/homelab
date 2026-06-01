@@ -76,6 +76,11 @@
         siteMonitor: https://grafana.{{HOMEPAGE_VAR_DOMAIN_0}}/
         description: Full-stack observability for the agentic era
 
+    - Minecraft:
+        widget:
+            type: minecraft
+            url: udp://100.76.87.226:25565
+
 - External:
     - Cloudflare:
         icon: https://dash.cloudflare.com/favicon.ico
