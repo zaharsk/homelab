@@ -25,6 +25,8 @@ services:
     ports:
       - '25565:25565'
 
+    restart: unless-stopped
+
     healthcheck:
       test: mc-health
       start_period: 1m
