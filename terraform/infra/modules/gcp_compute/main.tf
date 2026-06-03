@@ -14,7 +14,7 @@ resource "google_compute_instance" "this" {
     initialize_params {
       image = data.google_compute_image.ubuntu.self_link
       size  = each.value.boot_disk_size
-      type  = "pd-balanced"
+      type  = "pd-standard"
     }
   }
 
