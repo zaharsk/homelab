@@ -18,7 +18,7 @@
 
 - name: Configure unattended upgrades
   ansible.builtin.copy:
-    dest: /etc/apt/apt.conf.d/50unattended-upgrades
+    dest: /etc/apt/apt.conf.d/50-unattended-upgrades
     mode: "0644"
     content: |
       Unattended-Upgrade::Allowed-Origins {
@@ -31,4 +31,4 @@
 
       Unattended-Upgrade::Automatic-Reboot "true";
 
-      Unattended-Upgrade::Automatic-Reboot-Time "03:00";
+      Unattended-Upgrade::Automatic-Reboot-Time "02:45";
