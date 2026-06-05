@@ -127,3 +127,13 @@
         icon: https://grafana.com/static/assets/img/fav32.png
         href: https://zaharsk.grafana.net/
         description: The open and composable observability platform
+
+    - FolderFort:
+        icon: https://www.folderfort.com/wp-content/uploads/2024/02/favicon-100x100.png
+        href: https://eu2.folderfort.com/
+        description: Fast, affordable cloud storage
+    
+    - OysterVPN:
+        icon: https://oystervpn.com/favicon.png
+        href: https://oystervpn.com/auth/login/
+        description: Privacy For Your Digital Life
