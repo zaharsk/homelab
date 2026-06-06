@@ -20,9 +20,13 @@ services:
 
     ports:
       - '0.0.0.0:8080:80'
-    
+
     restart: unless-stopped
-    
+
+    cap_add:
+      - SETUID
+      - SETGID
+
     cap_drop:
       - ALL
 
