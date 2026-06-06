@@ -40,7 +40,7 @@ services:
       - traefik.http.routers.dashboard.entrypoints=https-ep
       - traefik.http.routers.dashboard.tls=true
       - traefik.http.routers.dashboard.service=api@internal
-      - traefik.http.routers.dashboard.middlewares=privateAccess@file
+      # - traefik.http.routers.dashboard.middlewares=privateAccess@file
 
       - traefik.entryPoints.https-ep.http.tls.domains[0].main=${DOMAIN_0}
       - traefik.entryPoints.https-ep.http.tls.domains[0].sans=*.${DOMAIN_0}
