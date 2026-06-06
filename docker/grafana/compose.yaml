@@ -9,22 +9,22 @@ services:
       - ./conf/custom.ini:/usr/share/grafana/conf/custom.ini
 
     environment:
-      GF_LOG_LEVEL: "debug"
+      GF_LOG_LEVEL: debug
 
-      GF_SERVER_ROOT_URL: "https://grafana.unco.games"
+      GF_SERVER_ROOT_URL: https://grafana.${GF_DOMAIN_0}
 
       GF_AUTH_GENERIC_OAUTH_ENABLED: true
-      GF_AUTH_GENERIC_OAUTH_NAME: "Vault"
-      GF_AUTH_GENERIC_OAUTH_SCOPES: "openid profile email groups"
+      GF_AUTH_GENERIC_OAUTH_NAME: Vault
+      GF_AUTH_GENERIC_OAUTH_SCOPES: openid profile email groups
 
-      GF_AUTH_GENERIC_OAUTH_CLIENT_ID: ${OAUTH_CLIENT_ID}
-      GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET: ${OAUTH_CLIENT_SECRET}
-      GF_AUTH_GENERIC_OAUTH_AUTH_URL: "https://vault.unco.games/ui/vault/identity/oidc/provider/default/authorize"
-      GF_AUTH_GENERIC_OAUTH_TOKEN_URL: "https://vault.unco.games/v1/identity/oidc/provider/default/token"
-      GF_AUTH_GENERIC_OAUTH_API_URL: "https://vault.unco.games/v1/identity/oidc/provider/default/userinfo"
+      GF_AUTH_GENERIC_OAUTH_CLIENT_ID: ${GF_OAUTH_CLIENT_ID}
+      GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET: ${GF_OAUTH_CLIENT_SECRET}
+      GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://vault.${GF_DOMAIN_0}/ui/vault/identity/oidc/provider/default/authorize
+      GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://vault.${GF_DOMAIN_0}/v1/identity/oidc/provider/default/token
+      GF_AUTH_GENERIC_OAUTH_API_URL: https://vault.${GF_DOMAIN_0}/v1/identity/oidc/provider/default/userinfo
 
       GF_AUTH_GENERIC_OAUTH_ALLOW_ASSIGN_GRAFANA_ADMIN: true
-      GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: "contains(groups[*], 'grafana_admins') && 'GrafanaAdmin' || 'Viewer'"
+      GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: contains(groups[*], 'grafana_admins') && 'GrafanaAdmin' || 'Viewer'
       GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_STRICT: true
 
     ports:
