@@ -1,5 +1,5 @@
 log:
-  level: 'INFO'
+  level: "DEBUG"
 
 ping: {}
 
@@ -37,8 +37,7 @@ entryPoints:
           scheme: https
           permanent: true
     forwardedHeaders:
-      trustedIPs: &trustedIPs
-        # NetBird's Network IPs
+      trustedIPs: &trustedIPs # NetBird's Network IPs
         - 100.76.0.0/16
         - fd9d:7f26:187d:26a7::/64
         # Cloudflare: https://www.cloudflare.com/ips/
@@ -64,7 +63,7 @@ entryPoints:
         - 2405:8100::/32
         - 2a06:98c0::/29
         - 2c0f:f248::/32
-    
+
   https-ep:
     address: ":443"
     http:
