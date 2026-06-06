@@ -3,8 +3,8 @@ http:
     beszel:
       loadBalancer:
         servers:
-          - url: http://100.76.112.49:8090
-  
+          - url: http://100.76.122.97:8090
+
   routers:
     beszel-webhook:
       entryPoints:
