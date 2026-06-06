@@ -49,7 +49,8 @@
         "hashicorp.hcl",
         "hashicorp.terraform",
         "redhat.ansible",
-        "signageos.signageos-vscode-sops"
+        "signageos.signageos-vscode-sops",
+        "barnim.markdown-code-copy-button"
       ],
       "settings": {
         "editor.formatOnSave": true,
