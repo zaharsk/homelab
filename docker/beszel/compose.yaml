@@ -4,7 +4,7 @@ services:
     image: henrygd/beszel
     
     volumes:
-      - beszel_data:/beszel_data
+      - data:/beszel_data
 
     environment:
       APP_URL: https://beszel.${BZ_DOMAIN_0}
@@ -28,4 +28,4 @@ services:
       - no-new-privileges:true
 
 volumes:
-  beszel_data:
+  data:
