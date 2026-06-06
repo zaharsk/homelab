@@ -1,0 +1,16 @@
+http:
+  services:
+    redisinsight:
+      loadBalancer:
+        servers:
+          - url: http://100.76.138.6:5540
+
+  routers:
+    redisinsight-private:
+      entryPoints:
+        - https-ep
+      rule: Host(`redisinsight.{{ env "DOMAIN_0" }}`)
+      service: redisinsight
+      middlewares:
+        - securityHeaders
+        - privateAccess
