@@ -7,7 +7,7 @@ services:
       - beszel_data:/beszel_data
 
     environment:
-      APP_URL: "https://beszel.unco.games"
+      APP_URL: https://beszel.${BZ_DOMAIN_0}
       DISABLE_PASSWORD_AUTH: true
       USER_CREATION: true
 
