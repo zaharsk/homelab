@@ -4,7 +4,7 @@ encrypt file_path:
     file_name=$(basename "{{ file_path }}") && \
     sops encrypt \
         --age $(age-keygen -y "${SOPS_AGE_KEY_FILE}") \
-        "{{ file_path }}" > "${WORKSPACE_FOLDER}/secrets/$file_name"
+        "{{ file_path }}" > "${WORKSPACE_PATH}/secrets/$file_name"
 
 decrypt file_path:
     file_name=$(basename "{{ file_path }}") && \

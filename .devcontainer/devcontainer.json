@@ -45,6 +45,7 @@
     "vscode": {
       "extensions": [
         "esbenp.prettier-vscode",
+        "irongeek.vscode-env",
         "barnim.markdown-code-copy-button",
         "nefrob.vscode-just-syntax",
         "hashicorp.hcl",
@@ -56,6 +57,9 @@
         "chat.disableAIFeatures": true,
         "editor.formatOnPaste": false,
         "editor.formatOnSave": true,
+        "files.associations": {
+          ".decrypted~.env": "env"
+        },
         // ----------------------------------------------------------------- //
 
         "ansible.lightspeed.enabled": false,
