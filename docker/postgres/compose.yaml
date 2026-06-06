@@ -23,13 +23,6 @@ services:
 
     restart: unless-stopped
 
-    cap_add:
-      - SETUID
-      - SETGID
-
-    cap_drop:
-      - ALL
-
   postgres:
     image: postgres
 
