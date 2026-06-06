@@ -31,8 +31,8 @@ services:
       retries: 3
       start_period: 10s
 
-    cap_drop:
-      - ALL
+    # cap_drop:
+    #   - ALL
 
-    security_opt:
-      - no-new-privileges:true
+    # security_opt:
+    #   - no-new-privileges:true
