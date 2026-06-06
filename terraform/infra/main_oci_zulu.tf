@@ -70,8 +70,8 @@ module "oci_zulu_compute" {
   instances = {
     alpha = {
       shape         = "VM.Standard.A1.Flex"
-      ocpus         = 1
-      memory_in_gbs = 2
+      ocpus         = 2
+      memory_in_gbs = 4
       enabled_nsg = [
         "ssh",
         "web",
