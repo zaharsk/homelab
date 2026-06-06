@@ -50,7 +50,6 @@
             #     siteMonitor: https://vaultwarden.{{HOMEPAGE_VAR_DOMAIN_0}}/
             #     description: An alternative server implementation of the Bitwarden Client API
 
----
 - Infrastructure:
           - Dockhand:
                     icon: https://dockhand.{{HOMEPAGE_VAR_DOMAIN_0}}/favicon-32x32.png
@@ -96,7 +95,7 @@
                     href: https://grafana.{{HOMEPAGE_VAR_DOMAIN_0}}/
                     siteMonitor: https://grafana.{{HOMEPAGE_VAR_DOMAIN_0}}/
                     description: Full-stack observability for the agentic era
----
+
 - External:
           - Cloudflare:
                     icon: https://dash.cloudflare.com/favicon.ico
