@@ -1,0 +1,16 @@
+http:
+  services:
+    pgadmin:
+      loadBalancer:
+        servers:
+          - url: http://100.76.138.6:8080
+
+  routers:
+    pgadmin-private:
+      entryPoints:
+        - https-ep
+      rule: Host(`pgadmin.{{ env "DOMAIN_0" }}`)
+      service: pgadmin
+      middlewares:
+        - securityHeaders
+        - privateAccess

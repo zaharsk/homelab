@@ -19,7 +19,7 @@ services:
       PGADMIN_CONFIG_SERVER_MODE: "False"
 
     ports:
-      - '0.0.0.0::8080:80'
+      - '0.0.0.0:8080:80'
     restart: unless-stopped
     cap_drop:
       - ALL
