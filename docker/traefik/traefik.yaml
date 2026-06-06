@@ -1,7 +1,7 @@
 log:
-  level: "DEBUG"
+  level: "INFO"
 
-accessLog: {}
+# accessLog: {}
 
 ping: {}
 

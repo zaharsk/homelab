@@ -1,12 +1,13 @@
 http:
   middlewares:
     privateAccess:
-        ipAllowList:
-          sourceRange:
-            - 127.0.0.0/8
-            - 100.76.0.0/16
-            - fd9d:7f26:187d:26a7::/64
-    
+      ipAllowList:
+        sourceRange:
+          - 127.0.0.0/8
+          - 100.76.0.0/16 # NetBird
+          - 172.16.0.0/12 # Docker
+          - fd9d:7f26:187d:26a7::/64
+
     securityHeaders:
       headers:
         customResponseHeaders:
