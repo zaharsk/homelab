@@ -23,7 +23,7 @@
     "ghcr.io/jsburckhardt/devcontainer-features/just:1": {},
     "ghcr.io/devcontainers/features/terraform:1.4.3": {},
     "ghcr.io/sliekens/devcontainer-features/ansible-core:1": {
-      "collections": "community.general,ansible.posix",
+      "collections": "community.general,ansible.posix,grafana.grafana,community.beszel",
       "roles": ""
     },
     "ghcr.io/sliekens/devcontainer-features/ansible-lint:1": {}
@@ -45,12 +45,12 @@
     "vscode": {
       "extensions": [
         "esbenp.prettier-vscode",
+        "barnim.markdown-code-copy-button",
         "nefrob.vscode-just-syntax",
         "hashicorp.hcl",
         "hashicorp.terraform",
         "redhat.ansible",
-        "signageos.signageos-vscode-sops",
-        "barnim.markdown-code-copy-button"
+        "signageos.signageos-vscode-sops"
       ],
       "settings": {
         "chat.disableAIFeatures": true,
