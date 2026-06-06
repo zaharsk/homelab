@@ -3,8 +3,8 @@ http:
     grafana:
       loadBalancer:
         servers:
-          - url: http://100.76.112.49:3000
-  
+          - url: http://100.76.122.97:3002
+
   routers:
     grafana-private:
       entryPoints:
