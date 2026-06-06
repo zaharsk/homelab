@@ -53,7 +53,14 @@
         "barnim.markdown-code-copy-button"
       ],
       "settings": {
+        "chat.disableAIFeatures": true,
+        "editor.formatOnPaste": false,
         "editor.formatOnSave": true,
+        // ----------------------------------------------------------------- //
+
+        "ansible.lightspeed.enabled": false,
+        "ansible.lightspeed.suggestions.enabled": false,
+
         "[terraform]": {
           "editor.defaultFormatter": "hashicorp.terraform",
           "editor.formatOnSave": false,
