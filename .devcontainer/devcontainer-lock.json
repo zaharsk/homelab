@@ -30,11 +30,6 @@
       "resolved": "ghcr.io/devcontainers/features/terraform@sha256:503d0888b3a43a32335e08cd4477f8c4629404ad83f6a36f0e0fee7f567c06c7",
       "integrity": "sha256:503d0888b3a43a32335e08cd4477f8c4629404ad83f6a36f0e0fee7f567c06c7"
     },
-    "ghcr.io/guiyomh/features/just:0": {
-      "version": "0.1.0",
-      "resolved": "ghcr.io/guiyomh/features/just@sha256:8311dff976bd153a54a879021353a7e149963e580022b25af49c45cfc5f13bec",
-      "integrity": "sha256:8311dff976bd153a54a879021353a7e149963e580022b25af49c45cfc5f13bec"
-    },
     "ghcr.io/sliekens/devcontainer-features/ansible-core:1": {
       "version": "1.0.0",
       "resolved": "ghcr.io/sliekens/devcontainer-features/ansible-core@sha256:4488cc6e0552ac72b030f8f5628eec7b3c35add910f4a2fc07c03365da5de392",
@@ -50,6 +45,11 @@
       "dependsOn": [
         "ghcr.io/devcontainers/features/python:1"
       ]
+    },
+    "ghcr.io/zaharsk/devcontainers/just:1": {
+      "version": "1.0.0",
+      "resolved": "ghcr.io/zaharsk/devcontainers/just@sha256:dee7cfcdf8b8573bdd101fa3784de640026ee15f84a00818e20d1b3ee5391342",
+      "integrity": "sha256:dee7cfcdf8b8573bdd101fa3784de640026ee15f84a00818e20d1b3ee5391342"
     }
   }
 }

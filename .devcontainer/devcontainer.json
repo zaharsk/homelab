@@ -20,7 +20,7 @@
     "ghcr.io/devcontainers-extra/features/age:1": {},
     "ghcr.io/devcontainers-extra/features/age-keygen:1": {},
     "ghcr.io/devcontainers-extra/features/sops:1": {},
-    "ghcr.io/guiyomh/features/just:0": {},
+    "ghcr.io/zaharsk/devcontainers/just:1": {},
     "ghcr.io/devcontainers/features/terraform:1.4.3": {},
     "ghcr.io/sliekens/devcontainer-features/ansible-core:1": {
       "collections": "community.general,ansible.posix,grafana.grafana,community.beszel",
@@ -47,7 +47,6 @@
         "esbenp.prettier-vscode",
         "irongeek.vscode-env",
         "barnim.markdown-code-copy-button",
-        "nefrob.vscode-just-syntax",
         "hashicorp.hcl",
         "hashicorp.terraform",
         "redhat.ansible",
