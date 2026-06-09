@@ -48,8 +48,8 @@
     },
     "ghcr.io/zaharsk/devcontainers/just:1": {
       "version": "1.0.1",
-      "resolved": "ghcr.io/zaharsk/devcontainers/just@sha256:858241ffc448a8fb87d3d05632986ac2035459d2923b080d94d07c3693fe5df6",
-      "integrity": "sha256:858241ffc448a8fb87d3d05632986ac2035459d2923b080d94d07c3693fe5df6"
+      "resolved": "ghcr.io/zaharsk/devcontainers/just@sha256:39fe15b79df6d93c5916ee4b414f53f84e64445879f070e7bec8eabcbf17e1f5",
+      "integrity": "sha256:39fe15b79df6d93c5916ee4b414f53f84e64445879f070e7bec8eabcbf17e1f5"
     }
   }
 }
