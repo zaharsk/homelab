@@ -24,7 +24,8 @@ module "local_inventory" {
         "home",
         "ubuntu",
         "x86",
-        "worker"
+        "worker",
+        "runners"
       ]
     },
   }
