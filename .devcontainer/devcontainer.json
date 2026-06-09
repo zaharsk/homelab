@@ -3,24 +3,14 @@
 {
   "name": "Homelab",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-  "image": "mcr.microsoft.com/devcontainers/base:noble",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
-    "ghcr.io/devcontainers/features/common-utils:2.5.9": {
-      "installZsh": true,
-      "configureZshAsDefaultShell": true,
-      "installOhMyZsh": true,
-      "installOhMyZshConfig": true,
-      "upgradePackages": true,
-      "installSsl": true,
-      "username": "automatic",
-      "userUid": "automatic",
-      "userGid": "automatic"
-    },
+    "ghcr.io/zaharsk/devcontainers/omz:1": {},
+    "ghcr.io/zaharsk/devcontainers/just:1": {},
     "ghcr.io/devcontainers-extra/features/age:1": {},
     "ghcr.io/devcontainers-extra/features/age-keygen:1": {},
     "ghcr.io/devcontainers-extra/features/sops:1": {},
-    "ghcr.io/zaharsk/devcontainers/just:1": {},
     "ghcr.io/devcontainers/features/terraform:1.4.3": {},
     "ghcr.io/sliekens/devcontainer-features/ansible-core:1": {
       "collections": "community.general,ansible.posix,grafana.grafana,community.beszel",
