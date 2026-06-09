@@ -14,3 +14,9 @@ forgejo admin auth add-oauth \
 	--group-claim-name groups \
 	--admin-group forgejo-admins
 ```
+
+```bash
+forgejo forgejo-cli actions register \
+	--name ubuntu-y \
+    --secret "$(openssl rand -hex 20)"
+```

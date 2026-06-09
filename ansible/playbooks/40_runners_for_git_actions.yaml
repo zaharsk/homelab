@@ -1,0 +1,10 @@
+---
+- name: Setup runners for git actions
+  hosts: runners
+  become: true
+
+  vars_files:
+    - /dev/shm/ansible.vars.yml
+
+  roles:
+    - install_forgejo_runner

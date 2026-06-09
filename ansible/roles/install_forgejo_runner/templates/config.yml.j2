@@ -1,0 +1,18 @@
+log:
+  level: info
+
+runner:
+  file: "{{ install_forgejo_runner_data_dir }}/.runner"
+
+  capacity: {{ install_forgejo_runner_capacity }}
+
+  labels:
+{% for label in install_forgejo_runner_labels %}
+    - "{{ label }}"
+{% endfor %}
+
+cache:
+  enabled: {{ install_forgejo_runner_cache_enabled | lower }}
+
+container:
+  network: "{{ install_forgejo_runner_container_network }}"

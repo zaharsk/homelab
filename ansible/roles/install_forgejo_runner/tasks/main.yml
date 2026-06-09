@@ -1,0 +1,161 @@
+---
+- name: Assert required variables
+  ansible.builtin.assert:
+    that:
+      - install_forgejo_runner_instance_url | length > 0
+      - install_forgejo_runner_token | length > 0
+
+- name: Determine architecture
+  ansible.builtin.set_fact:
+    install_forgejo_runner_arch: >-
+      {{
+        {
+          'x86_64': 'amd64',
+          'aarch64': 'arm64'
+        }.get(ansible_facts['architecture'])
+      }}
+
+- name: Assert architecture is supported
+  ansible.builtin.assert:
+    that:
+      - install_forgejo_runner_arch is not none
+    fail_msg: >-
+      Unsupported architecture:
+      {{ ansible_facts['architecture'] }}
+
+- name: Create group
+  ansible.builtin.group:
+    name: "{{ install_forgejo_runner_group }}"
+    state: present
+
+- name: Create user
+  ansible.builtin.user:
+    name: "{{ install_forgejo_runner_user }}"
+    group: "{{ install_forgejo_runner_group }}"
+    home: "{{ install_forgejo_runner_data_dir }}"
+    system: true
+    shell: /usr/sbin/nologin
+    create_home: false
+
+- name: Add runner user to docker group
+  ansible.builtin.user:
+    name: "{{ install_forgejo_runner_user }}"
+    groups:
+      - docker
+    append: true
+
+- name: Create directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ install_forgejo_runner_user }}"
+    group: "{{ install_forgejo_runner_group }}"
+    mode: "0755"
+  loop:
+    - "{{ install_forgejo_runner_data_dir }}"
+    - "{{ install_forgejo_runner_config_dir }}"
+
+- name: Get latest Forgejo Runner release
+  ansible.builtin.uri:
+    url: https://code.forgejo.org/api/v1/repos/forgejo/runner/releases/latest
+    return_content: true
+  register: install_forgejo_runner_release
+  when: install_forgejo_runner_version == "latest"
+
+- name: Resolve version
+  ansible.builtin.set_fact:
+    install_forgejo_runner_tag: >-
+      {{
+        install_forgejo_runner_release.json.tag_name
+        if install_forgejo_runner_version == 'latest'
+        else install_forgejo_runner_version
+      }}
+
+    install_forgejo_runner_version_number: >-
+      {{
+        (
+          install_forgejo_runner_release.json.tag_name
+          if install_forgejo_runner_version == 'latest'
+          else install_forgejo_runner_version
+        ) | regex_replace('^v', '')
+      }}
+
+- name: Build download URL
+  ansible.builtin.set_fact:
+    install_forgejo_runner_download_url: >-
+      {{
+        'https://code.forgejo.org/forgejo/runner/releases/download/'
+        ~ install_forgejo_runner_tag
+        ~ '/forgejo-runner-'
+        ~ install_forgejo_runner_version_number
+        ~ '-linux-'
+        ~ install_forgejo_runner_arch
+      }}
+
+- name: Get installed runner version
+  ansible.builtin.command:
+    cmd: >-
+      {{ install_forgejo_runner_install_dir }}/forgejo-runner
+      --version
+  register: install_forgejo_runner_current_version
+  changed_when: false
+  failed_when: false
+
+- name: Download binary
+  ansible.builtin.get_url:
+    url: "{{ install_forgejo_runner_download_url }}"
+    dest: "{{ install_forgejo_runner_install_dir }}/forgejo-runner"
+    owner: root
+    group: root
+    mode: "0755"
+  when: >-
+    install_forgejo_runner_current_version.rc != 0
+    or
+    install_forgejo_runner_version_number
+    not in install_forgejo_runner_current_version.stdout
+  notify: Restart forgejo-runner
+
+- name: Create runner credentials file
+  ansible.builtin.command:
+    cmd: >-
+      {{ install_forgejo_runner_install_dir }}/forgejo-runner
+      create-runner-file
+      --instance {{ install_forgejo_runner_instance_url }}
+      --secret {{ install_forgejo_runner_token }}
+  args:
+    chdir: "{{ install_forgejo_runner_data_dir }}"
+    creates: "{{ install_forgejo_runner_data_dir }}/.runner"
+  become: true
+  become_user: "{{ install_forgejo_runner_user }}"
+  notify: Restart forgejo-runner
+
+- name: Ensure runner files ownership
+  ansible.builtin.file:
+    path: "{{ install_forgejo_runner_data_dir }}"
+    state: directory
+    recurse: true
+    owner: "{{ install_forgejo_runner_user }}"
+    group: "{{ install_forgejo_runner_group }}"
+
+- name: Install runner config
+  ansible.builtin.template:
+    src: config.yml.j2
+    dest: "{{ install_forgejo_runner_config_dir }}/config.yml"
+    owner: "{{ install_forgejo_runner_user }}"
+    group: "{{ install_forgejo_runner_group }}"
+    mode: "0644"
+  notify: Restart forgejo-runner
+
+- name: Install systemd unit
+  ansible.builtin.template:
+    src: forgejo-runner.service.j2
+    dest: /etc/systemd/system/forgejo-runner.service
+    mode: "0644"
+  notify: Restart forgejo-runner
+
+- name: Enable and start forgejo-runner
+  ansible.builtin.systemd:
+    name: forgejo-runner
+    enabled: true
+    state: started
+    daemon_reload: true

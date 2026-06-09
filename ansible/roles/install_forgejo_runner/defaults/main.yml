@@ -1,0 +1,23 @@
+install_forgejo_runner_version: latest
+
+install_forgejo_runner_user: forgejo-runner
+install_forgejo_runner_group: forgejo-runner
+
+install_forgejo_runner_install_dir: /usr/local/bin
+
+install_forgejo_runner_data_dir: /var/lib/forgejo-runner
+install_forgejo_runner_config_dir: /etc/forgejo-runner
+
+install_forgejo_runner_instance_url: ""
+install_forgejo_runner_token: ""
+
+install_forgejo_runner_capacity: 2
+
+install_forgejo_runner_labels:
+  - docker:docker://node:current-bookworm
+  - ubuntu-latest:docker://node:current-bookworm
+  - amd64:host
+
+install_forgejo_runner_cache_enabled: true
+
+install_forgejo_runner_container_network: host
