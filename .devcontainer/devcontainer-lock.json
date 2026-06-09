@@ -15,10 +15,10 @@
       "resolved": "ghcr.io/devcontainers-extra/features/sops@sha256:4cf07db9322cbe261fd103de5ba390907df63cd48d9e0d68517656fc35a27e6e",
       "integrity": "sha256:4cf07db9322cbe261fd103de5ba390907df63cd48d9e0d68517656fc35a27e6e"
     },
-    "ghcr.io/devcontainers/features/common-utils:2": {
-      "version": "2.5.8",
-      "resolved": "ghcr.io/devcontainers/features/common-utils@sha256:c42fdefe6d737a3a6f61cc52b23c7c9a565d08cc4d9c303669a7cf2ee5fd81fc",
-      "integrity": "sha256:c42fdefe6d737a3a6f61cc52b23c7c9a565d08cc4d9c303669a7cf2ee5fd81fc"
+    "ghcr.io/devcontainers/features/common-utils:2.5.9": {
+      "version": "2.5.9",
+      "resolved": "ghcr.io/devcontainers/features/common-utils@sha256:cb0c4d3c276f157eed17935747e364178d75fee17f55c4e129966f64633deb3a",
+      "integrity": "sha256:cb0c4d3c276f157eed17935747e364178d75fee17f55c4e129966f64633deb3a"
     },
     "ghcr.io/devcontainers/features/python:1": {
       "version": "1.8.0",
@@ -47,9 +47,9 @@
       ]
     },
     "ghcr.io/zaharsk/devcontainers/just:1": {
-      "version": "1.0.0",
-      "resolved": "ghcr.io/zaharsk/devcontainers/just@sha256:dee7cfcdf8b8573bdd101fa3784de640026ee15f84a00818e20d1b3ee5391342",
-      "integrity": "sha256:dee7cfcdf8b8573bdd101fa3784de640026ee15f84a00818e20d1b3ee5391342"
+      "version": "1.0.1",
+      "resolved": "ghcr.io/zaharsk/devcontainers/just@sha256:858241ffc448a8fb87d3d05632986ac2035459d2923b080d94d07c3693fe5df6",
+      "integrity": "sha256:858241ffc448a8fb87d3d05632986ac2035459d2923b080d94d07c3693fe5df6"
     }
   }
 }
