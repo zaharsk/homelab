@@ -5,9 +5,9 @@ services:
     image: lscr.io/linuxserver/transmission:latest
 
     volumes:
-      - config:/config
-      - /srv/transmission:/downloads #optional
-      - /srv/transmission/watch:/watch #optional
+      - ${PWD}/config:/config
+      - ${PWD}/downloads:/downloads #optional
+      - ${PWD}/downloads/watch:/watch #optional
 
     environment:
       # - PUID=1000
@@ -47,5 +47,5 @@ services:
     security_opt:
       - no-new-privileges:true
 
-volumes:
-  config: {}
+# volumes:
+#   config: {}
