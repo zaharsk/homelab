@@ -21,8 +21,8 @@
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
   "containerEnv": {
-    "GIT_USER_NAME": "${localEnv:GIT_USER_NAME}",
-    "GIT_USER_EMAIL": "${localEnv:GIT_USER_EMAIL}",
+    "GIT_USER_NAME": "${localEnv:GITHUB_NAME}",
+    "GIT_USER_EMAIL": "${localEnv:GITHUB_EMAIL}",
     "WORKSPACE_PATH": "${containerWorkspaceFolder}",
     "SECRETS_PATH": "${containerWorkspaceFolder}/secrets",
     "SOPS_AGE_KEY_FILE": "/dev/shm/age.key",
