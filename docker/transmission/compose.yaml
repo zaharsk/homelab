@@ -1,0 +1,46 @@
+---
+name: torrents
+services:
+  transmission:
+    image: lscr.io/linuxserver/transmission:latest
+
+    volumes:
+      - config:/config
+      - /srv/transmission/downloads:/downloads #optional
+      - /srv/transmission/watch:/watch #optional
+
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Belgrade
+      - TRANSMISSION_WEB_HOME=transmission.${DOMAIN_0}
+      # - USER= #optional
+      # - PASS= #optional
+      # - WHITELIST= #optional
+      # - PEERPORT= #optional
+      # - HOST_WHITELIST= #optional
+
+    ports:
+      - "0.0.0.0:9091:9091"
+      - "0.0.0.0:51413:51413"
+      - "0.0.0.0:51413:51413/udp"
+
+    restart: unless-stopped
+
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - 'curl -s http://localhost:9091/transmission/rpc | grep -q "409 Conflict"'
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+    cap_drop:
+      - ALL
+
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  config: {}

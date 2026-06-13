@@ -1,0 +1,24 @@
+http:
+  services:
+    transmission:
+      loadBalancer:
+        servers:
+          - url: http://100.76.138.6:9091
+
+  routers:
+    transmission-private:
+      entryPoints:
+        - https-ep
+      rule: Host(`transmission.{{ env "DOMAIN_0" }}`)
+      service: transmission
+      middlewares:
+        - securityHeaders
+        - privateAccess
+
+    # transmission-webhook:
+    #   entryPoints:
+    #     - https-ep
+    #   rule: Host(`transmission.{{ env "DOMAIN_0" }}`) && (PathPrefix(`/webhook`) || PathPrefix(`/webhook-test`))
+    #   service: transmission
+    #   middlewares:
+    #     - securityHeaders
