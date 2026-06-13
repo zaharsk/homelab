@@ -6,7 +6,7 @@ services:
 
     volumes:
       - config:/config
-      - /srv/transmission/downloads:/downloads #optional
+      - /srv/transmission:/downloads #optional
       - /srv/transmission/watch:/watch #optional
 
     environment:
