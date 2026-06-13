@@ -6,7 +6,8 @@ services:
 
     volumes:
       - ${PWD}/config:/config
-      - ${PWD}/downloads:/downloads #optional
+      - ${PWD}/downloads/complete:/downloads/complete
+      - ${PWD}/downloads/incomplete:/downloads/incomplete
       - ${PWD}/downloads/watch:/watch #optional
 
     environment:
