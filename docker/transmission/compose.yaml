@@ -36,13 +36,13 @@ services:
       retries: 3
       start_period: 30s
 
-    cap_add:
-      - CHOWN
-      - SETUID
-      - SETGID
+    # cap_add:
+    #   - CHOWN
+    #   - SETUID
+    #   - SETGID
 
-    cap_drop:
-      - ALL
+    # cap_drop:
+    #   - ALL
 
     security_opt:
       - no-new-privileges:true
