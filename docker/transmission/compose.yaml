@@ -14,7 +14,7 @@ services:
       # - PUID=1000
       # - PGID=1000
       - TZ=Europe/Belgrade
-      - TRANSMISSION_WEB_HOME=transmission.${DOMAIN_0}
+      # - TRANSMISSION_WEB_HOME=transmission.${DOMAIN_0}
       # - USER= #optional
       # - PASS= #optional
       # - WHITELIST= #optional
