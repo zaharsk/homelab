@@ -10,8 +10,8 @@ services:
       - /srv/transmission/watch:/watch #optional
 
     environment:
-      - PUID=1000
-      - PGID=1000
+      # - PUID=1000
+      # - PGID=1000
       - TZ=Europe/Belgrade
       - TRANSMISSION_WEB_HOME=transmission.${DOMAIN_0}
       # - USER= #optional
@@ -21,9 +21,9 @@ services:
       # - HOST_WHITELIST= #optional
 
     ports:
-      - '0.0.0.0:9091:9091'
-      - '0.0.0.0:51413:51413'
-      - '0.0.0.0:51413:51413/udp'
+      - "0.0.0.0:9091:9091"
+      - "0.0.0.0:51413:51413"
+      - "0.0.0.0:51413:51413/udp"
 
     restart: unless-stopped
 
