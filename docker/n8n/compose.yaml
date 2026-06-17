@@ -11,6 +11,7 @@ services:
       - ./local-files:/files
 
     environment:
+      - N8N_DIAGNOSTICS_ENABLED=false
       - N8N_HOST=${SUBDOMAIN}.${DOMAIN_NAME}
       - N8N_PORT=5678
       - N8N_PROTOCOL=https
@@ -32,12 +33,18 @@ services:
       - N8N_ADDITIONAL_NON_UI_ROUTES=auth
 
     ports:
-      - '0.0.0.0:5678:5678'
+      - "0.0.0.0:5678:5678"
 
     restart: unless-stopped
 
     healthcheck:
-      test: [ "CMD", "sh", "-c", "(wget -q -T 5 -O - http://localhost:5678/healthz 2>/dev/null | grep -qF '{\"status\":\"ok\"}') || exit 1" ]
+      test:
+        [
+          "CMD",
+          "sh",
+          "-c",
+          '(wget -q -T 5 -O - http://localhost:5678/healthz 2>/dev/null | grep -qF ''{"status":"ok"}'') || exit 1',
+        ]
       start_period: 30s
       interval: 10s
       timeout: 5s
