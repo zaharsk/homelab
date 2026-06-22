@@ -13,7 +13,8 @@ resource "vault_identity_oidc_client" "beszel" {
   ]
 
   redirect_uris = [
-    "https://beszel.unco.games/api/oauth2-redirect"
+    "https://beszel.unco.games/api/oauth2-redirect",
+    "beszel-companion://redirect"
   ]
 }
 
