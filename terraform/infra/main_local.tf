@@ -27,6 +27,6 @@ module "local_inventory" {
         "worker",
         "runners"
       ]
-    },
+    }
   }
 }

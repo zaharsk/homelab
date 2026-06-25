@@ -100,6 +100,21 @@ module "oci_zulu_compute" {
         "arm",
         "worker"
       ]
+    },
+    xui = {
+      shape         = "VM.Standard.A1.Flex"
+      ocpus         = 1
+      memory_in_gbs = 2
+      enabled_nsg = [
+        "ssh",
+      ]
+      groups = [
+        "cloud",
+        "oci",
+        "ubuntu",
+        "arm",
+        "worker"
+      ]
     }
   }
 }
