@@ -6,6 +6,6 @@ configure_users_list:
       - docker
 
     public_keys:
-      - https://github.com/zakharsk.keys
+      - https://github.com/zaharsk.keys
 
     sudo_nopasswd: true
