@@ -111,6 +111,16 @@
         siteMonitor: https://grafana.{{HOMEPAGE_VAR_DOMAIN_0}}/
         description: Full-stack observability for the agentic era
 
+    - 3X-UI RU:
+        icon: https://docs.sanaei.dev/favicon.png
+        href: ru.{{HOMEPAGE_VAR_DOMAIN_0}}{{HOMEPAGE_VAR_3XUI_PATH_RU}}
+        description: 3X-UI is an advanced, open-source web control panel for managing Xray-core servers.
+
+    - 3X-UI NL:
+        icon: https://docs.sanaei.dev/favicon.png
+        href: nl.{{HOMEPAGE_VAR_DOMAIN_0}}{{HOMEPAGE_VAR_3XUI_PATH_NL}}
+        description: 3X-UI is an advanced, open-source web control panel for managing Xray-core servers.
+
 - External:
     - Cloudflare:
         icon: https://dash.cloudflare.com/favicon.ico
@@ -136,6 +146,11 @@
         icon: https://static.alwaysdata.com/media/reseller/1/theme/favicon_kfxZA8s.png
         href: https://admin.alwaysdata.com/
         description: the European Cloud
+
+    - VDSina RU:
+        icon: https://cp.vdsina.ru/static/img/favicon/apple-touch-icon.png
+        href: https://cp.vdsina.ru
+        description: Cloud VPS/VDS servers with Windows and Linux for any task.
 
     - Supabase:
         icon: https://supabase.com/dashboard/favicon/apple-icon-57x57.png
