@@ -101,12 +101,14 @@ module "oci_zulu_compute" {
         "worker"
       ]
     },
-    xui = {
+    xuinl = {
       shape         = "VM.Standard.A1.Flex"
       ocpus         = 1
       memory_in_gbs = 2
       enabled_nsg = [
         "ssh",
+        "web",
+        "xui"
       ]
       groups = [
         "cloud",

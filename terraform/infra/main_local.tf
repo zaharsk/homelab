@@ -27,6 +27,20 @@ module "local_inventory" {
         "worker",
         "runners"
       ]
+    },
+
+    xuiru = {
+      ip   = "178.20.46.128"
+      user = "ubuntu"
+
+      groups = [
+        "cloud",
+        "vdsina",
+        "ubuntu",
+        "x86",
+        "worker"
+      ]
     }
+
   }
 }

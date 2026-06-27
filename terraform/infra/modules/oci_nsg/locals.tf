@@ -58,6 +58,35 @@ locals {
         }
       ]
     }
+
+    xui = {
+      ingress = [
+        {
+          protocol    = "6"
+          source_type = "CIDR_BLOCK"
+          source      = "0.0.0.0/0"
+          port        = 58544
+        },
+        {
+          protocol    = "6"
+          source_type = "CIDR_BLOCK"
+          source      = "0.0.0.0/0"
+          port        = 28781
+        },
+        {
+          protocol    = "17"
+          source_type = "CIDR_BLOCK"
+          source      = "0.0.0.0/0"
+          port        = 443
+        },
+        {
+          protocol    = "17"
+          source_type = "CIDR_BLOCK"
+          source      = "0.0.0.0/0"
+          port        = 8443
+        }
+      ]
+    }
   }
 
   ingress_rules = flatten([
