@@ -113,12 +113,12 @@
 
     - 3X-UI RU:
         icon: https://docs.sanaei.dev/favicon.png
-        href: ru.{{HOMEPAGE_VAR_DOMAIN_0}}{{HOMEPAGE_VAR_3XUI_PATH_RU}}
+        href: https://ru.{{HOMEPAGE_VAR_DOMAIN_2}}{{HOMEPAGE_VAR_3XUI_PATH_RU}}
         description: 3X-UI is an advanced, open-source web control panel for managing Xray-core servers.
 
     - 3X-UI NL:
         icon: https://docs.sanaei.dev/favicon.png
-        href: nl.{{HOMEPAGE_VAR_DOMAIN_0}}{{HOMEPAGE_VAR_3XUI_PATH_NL}}
+        href: https://nl.{{HOMEPAGE_VAR_DOMAIN_2}}{{HOMEPAGE_VAR_3XUI_PATH_NL}}
         description: 3X-UI is an advanced, open-source web control panel for managing Xray-core servers.
 
 - External:
