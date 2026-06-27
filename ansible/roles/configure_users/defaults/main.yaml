@@ -1,11 +1,23 @@
 ---
 configure_users_list:
   - name: zakhar
+
     groups:
       - sudo
       - docker
 
     public_keys:
-      - https://github.com/zaharsk.keys
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHFrI1bsCqb42p7wsr5TA9i+lD03nG1XaOQQpZ0DPtfU zaharsk@gmail.com
+
+    sudo_nopasswd: true
+
+  - name: ubuntu
+
+    groups:
+      - sudo
+      - docker
+
+    public_keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPf1eBQZohkDZK6yT0k4MOOa56AT3zNsEOLMrpGlrFuy ubuntu@homelab
 
     sudo_nopasswd: true

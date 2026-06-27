@@ -16,27 +16,16 @@
     append: true
     state: present
 
-- name: Download public keys
-  loop: "{{ configure_users_list | subelements('public_keys') }}"
-  loop_control:
-    label: "{{ item.0.name }} -> {{ item.1 }}"
-
-  ansible.builtin.uri:
-    url: "{{ item.1 }}"
-    return_content: true
-  register: configure_users_public_keys
-
-
 - name: Install authorized keys
-  loop: "{{ configure_users_public_keys.results }}"
-  loop_control:
-    label: "{{ item.item.0.name }}"
-
   ansible.posix.authorized_key:
-    user: "{{ item.item.0.name }}"
-    key: "{{ item.content }}"
+    user: "{{ item.name }}"
+    key: "{{ item.public_keys | join('\n') }}"
     state: present
-
+    exclusive: true
+  loop: "{{ configure_users_list }}"
+  when:
+    - item.public_keys is defined
+    - item.public_keys | length > 0
 
 - name: Configure sudo users
   loop: "{{ configure_users_list }}"
