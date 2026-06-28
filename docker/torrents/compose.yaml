@@ -5,10 +5,10 @@ services:
     image: lscr.io/linuxserver/qbittorrent:latest
     volumes:
       - ${PWD}/qb_config:/config
-      - ${PWD}/downloads/complete:/downloads
+      - ${PWD}/downloads:/downloads
     environment:
-      - PUID=1000
-      - PGID=1000
+      # - PUID=1000
+      # - PGID=1000
       - TZ=Europe/Belgrade
       - WEBUI_PORT=8080
       - TORRENTING_PORT=6881
