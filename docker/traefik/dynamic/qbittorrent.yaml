@@ -1,0 +1,24 @@
+http:
+  services:
+    qbittorrent:
+      loadBalancer:
+        servers:
+          - url: http://100.76.138.6:8081
+
+  routers:
+    qbittorrent-private:
+      entryPoints:
+        - https-ep
+      rule: Host(`qbittorrent.{{ env "DOMAIN_0" }}`)
+      service: qbittorrent
+      middlewares:
+        - securityHeaders
+        - privateAccess
+
+    # qbittorrent-webhook:
+    #   entryPoints:
+    #     - https-ep
+    #   rule: Host(`qbittorrent.{{ env "DOMAIN_0" }}`) && (PathPrefix(`/webhook`) || PathPrefix(`/webhook-test`))
+    #   service: qbittorrent
+    #   middlewares:
+    #     - securityHeaders

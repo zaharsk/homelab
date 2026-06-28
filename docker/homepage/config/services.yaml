@@ -34,18 +34,31 @@
 
     - n8n:
         icon: https://n8n.io/favicon.ico
-        href: https://n8n.{{HOMEPAGE_VAR_DOMAIN_0}}/
+        href: https://n8n.{{HOMEPAGE_VAR_DOMAIN_0}}
         siteMonitor: https://n8n.{{HOMEPAGE_VAR_DOMAIN_0}}/
         description: AI Workflow Automation Platform & Tools
 
     - transmission:
         icon: https://transmissionbt.com/favicon.ico
-        href: https://transmission.{{HOMEPAGE_VAR_DOMAIN_0}}/
+        href: https://transmission.{{HOMEPAGE_VAR_DOMAIN_0}}
         siteMonitor: https://transmission.{{HOMEPAGE_VAR_DOMAIN_0}}/
         description: AI Workflow Automation Platform & Tools
         widget:
           type: transmission
           url: https://transmission.{{HOMEPAGE_VAR_DOMAIN_0}}
+
+    - qbittorrent:
+        icon: https://www.qbittorrent.org/favicon.ico
+        href: https://qbittorrent.{{HOMEPAGE_VAR_DOMAIN_0}}
+        siteMonitor: https://qbittorrent.{{HOMEPAGE_VAR_DOMAIN_0}}
+        description: The qBittorrent project aims to provide an open-source software alternative to μTorrent.
+        widget:
+          type: qbittorrent
+          url: https://qbittorrent.{{HOMEPAGE_VAR_DOMAIN_0}}
+          username: username
+          password: password
+          enableLeechProgress: true # optional, defaults to false
+          enableLeechSize: true # optional, defaults to false
 
     - Gramps Web:
         icon: https://www.grampsweb.org/favicon.ico

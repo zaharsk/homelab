@@ -1,6 +1,26 @@
 ---
 name: torrents
 services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    volumes:
+      - ${PWD}/qb_config:/config
+      - ${PWD}/downloads/complete:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Belgrade
+      - WEBUI_PORT=8080
+      - TORRENTING_PORT=6881
+    ports:
+      - "0.0.0.0:6881:6881"
+      - "0.0.0.0:6881:6881/udp"
+      - "0.0.0.0:8081:8080"
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    stop_grace_period: "10s"
+
   transmission:
     image: lscr.io/linuxserver/transmission:latest
 
