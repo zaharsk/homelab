@@ -6,67 +6,79 @@ services:
     volumes:
       - ${PWD}/qb_config:/config
       - ${PWD}/downloads:/downloads
+
     environment:
       # - PUID=1000
       # - PGID=1000
       - TZ=Europe/Belgrade
       - WEBUI_PORT=8080
       - TORRENTING_PORT=6881
-    ports:
-      - "0.0.0.0:6881:6881"
-      - "0.0.0.0:6881:6881/udp"
-      - "0.0.0.0:8081:8080"
-    restart: unless-stopped
-    security_opt:
-      - no-new-privileges:true
-    stop_grace_period: "10s"
-
-  transmission:
-    image: lscr.io/linuxserver/transmission:latest
-
-    volumes:
-      - ${PWD}/config:/config
-      - ${PWD}/downloads/complete:/downloads/complete
-      - ${PWD}/downloads/incomplete:/downloads/incomplete
-      - ${PWD}/downloads/watch:/watch #optional
-
-    environment:
-      # - PUID=1000
-      # - PGID=1000
-      - TZ=Europe/Belgrade
-      # - TRANSMISSION_WEB_HOME=transmission.${DOMAIN_0}
-      # - USER= #optional
-      # - PASS= #optional
-      # - WHITELIST= #optional
-      # - PEERPORT= #optional
-      # - HOST_WHITELIST= #optional
 
     ports:
-      - "0.0.0.0:9091:9091"
-      - "0.0.0.0:51413:51413"
-      - "0.0.0.0:51413:51413/udp"
+      - '0.0.0.0:6881:6881'
+      - '0.0.0.0:6881:6881/udp'
+      - '0.0.0.0:8081:8080'
 
     restart: unless-stopped
 
     healthcheck:
-      test:
-        - CMD-SHELL
-        - 'curl -s http://localhost:9091/transmission/rpc | grep -q "409: Conflict"'
+      test: [ "CMD", "curl", "--fail", "--silent", "http://localhost:8080/" ]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 30s
 
-    # cap_add:
-    #   - CHOWN
-    #   - SETUID
-    #   - SETGID
-
-    # cap_drop:
-    #   - ALL
-
     security_opt:
       - no-new-privileges:true
 
-# volumes:
-#   config: {}
+    stop_grace_period: "10s"
+
+#   transmission:
+#     image: lscr.io/linuxserver/transmission:latest
+
+#     volumes:
+#       - ${PWD}/config:/config
+#       - ${PWD}/downloads/complete:/downloads/complete
+#       - ${PWD}/downloads/incomplete:/downloads/incomplete
+#       - ${PWD}/downloads/watch:/watch #optional
+
+#     environment:
+#       # - PUID=1000
+#       # - PGID=1000
+#       - TZ=Europe/Belgrade
+#       # - TRANSMISSION_WEB_HOME=transmission.${DOMAIN_0}
+#       # - USER= #optional
+#       # - PASS= #optional
+#       # - WHITELIST= #optional
+#       # - PEERPORT= #optional
+#       # - HOST_WHITELIST= #optional
+
+#     ports:
+#       - "0.0.0.0:9091:9091"
+#       - "0.0.0.0:51413:51413"
+#       - "0.0.0.0:51413:51413/udp"
+
+#     restart: unless-stopped
+
+#     healthcheck:
+#       test:
+#         - CMD-SHELL
+#         - 'curl -s http://localhost:9091/transmission/rpc | grep -q "409: Conflict"'
+#       interval: 30s
+#       timeout: 10s
+#       retries: 3
+#       start_period: 30s
+
+#     # cap_add:
+#     #   - CHOWN
+#     #   - SETUID
+#     #   - SETGID
+
+#     # cap_drop:
+#     #   - ALL
+
+#     security_opt:
+#       - no-new-privileges:true
+
+# # volumes:
+# #   config: {}

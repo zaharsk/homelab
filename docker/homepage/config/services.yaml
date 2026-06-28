@@ -38,14 +38,14 @@
         siteMonitor: https://n8n.{{HOMEPAGE_VAR_DOMAIN_0}}/
         description: AI Workflow Automation Platform & Tools
 
-    - transmission:
-        icon: https://transmissionbt.com/favicon.ico
-        href: https://transmission.{{HOMEPAGE_VAR_DOMAIN_0}}
-        siteMonitor: https://transmission.{{HOMEPAGE_VAR_DOMAIN_0}}/
-        description: AI Workflow Automation Platform & Tools
-        widget:
-          type: transmission
-          url: https://transmission.{{HOMEPAGE_VAR_DOMAIN_0}}
+    # - transmission:
+    #     icon: https://transmissionbt.com/favicon.ico
+    #     href: https://transmission.{{HOMEPAGE_VAR_DOMAIN_0}}
+    #     siteMonitor: https://transmission.{{HOMEPAGE_VAR_DOMAIN_0}}/
+    #     description: AI Workflow Automation Platform & Tools
+    #     widget:
+    #       type: transmission
+    #       url: https://transmission.{{HOMEPAGE_VAR_DOMAIN_0}}
 
     - qbittorrent:
         icon: https://www.qbittorrent.org/favicon.ico
